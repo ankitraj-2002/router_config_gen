@@ -1,8 +1,10 @@
-import './options.css'
+import './options.css';
+import axios from 'axios';
+import {useEffect,useState } from 'react';
 
 const ButtonList = ({ items }) => {
   return (
-    <div>
+    <div className = "button">
       {items.map((item, index) => (
         <button key={index} onClick={() => alert(`You clicked on ${item}`)}>
           {item}
@@ -11,10 +13,18 @@ const ButtonList = ({ items }) => {
     </div>
   );
 };
-
 // Example usage
 const Options = () => {
-  const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+  const [CommandList,setCommandList] = useState([]);
+  useEffect(() =>{
+    axios.get("http://localhost:3001/BaseCommands").then((response) =>{
+      setCommandList(response.data);
+    })
+  })
+  let items = [];
+  CommandList.forEach((ele)=>{
+    items.push(ele.BaseCommand);
+  })
 
   return (
     <div className='options'>
