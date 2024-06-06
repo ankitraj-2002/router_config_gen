@@ -1,5 +1,11 @@
 /* .App {
   text-align: center;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  
+=======
+>>>>>>> main
 } */
 .title {
   text-align:center;
@@ -7,6 +13,10 @@
   width: 50%;
   border: 3 px solid green;
   padding: 10 px;
+<<<<<<< HEAD
+=======
+>>>>>>> b142414 (Created Backend for setCommands)
+>>>>>>> main
 }
 .Base_Command {
   text-align:center;
