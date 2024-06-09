@@ -2,12 +2,15 @@ import './options.css';
 import axios from 'axios';
 import {useEffect,useState } from 'react';
 
-const ButtonList = ({ items }) => {
+const ButtonList= ({ items }) => {
   return (
     <div className = "button">
       {items.map((item, index) => (
-        <button key={index} onClick={() => alert(`You clicked on ${item}`)}>
-          {item}
+        <button key={index} onClick={() => {
+          alert(`You clicked on ${item}`)
+          console.log(item[0])
+        }}>
+          {item[1]}
         </button>
       ))}
     </div>
@@ -23,9 +26,8 @@ const Options = () => {
   })
   let items = [];
   CommandList.forEach((ele)=>{
-    items.push(ele.BaseCommand);
+    items.push([ele.id,ele.BaseCommand]);
   })
-
   return (
     <div className='options'>
       <h1>List of Buttons</h1>
