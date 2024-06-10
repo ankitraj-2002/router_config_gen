@@ -1,29 +1,35 @@
 import './options.css';
 import axios from 'axios';
 import {useEffect,useState } from 'react';
+import Display from '../../display/Display';
 
-const ButtonList= ({ items }) => {
-  return (
-    <div className = "button">
-      {items.map((item, index) => (
-        <button key={index} onClick={() => {
-          alert(`You clicked on ${item}`)
-          console.log(item[0])
-        }}>
-          {item[1]}
-        </button>
-      ))}
-    </div>
-  );
-};
-// Example usage
+
+//Available command options::
 const Options = () => {
   const [CommandList,setCommandList] = useState([]);
+const [CommandString,setCommandString] = useState("");
+
   useEffect(() =>{
     axios.get("http://localhost:3001/BaseCommands").then((response) =>{
       setCommandList(response.data);
     })
-  })
+  },[]);
+  const onbuttonclick = (item)=> {
+    setCommandString(item[1])
+    
+  };
+  const ButtonList= ({ items }) => {
+    return (
+      <div className = "button">
+      {items.map((item, index) => (
+        <button key={index} onClick={()=> onbuttonclick(item)}>
+        {item[1]}
+        </button>
+      ))}
+      </div>
+    );
+    };
+  //items list will contain the command options that is going to be displayed; 
   let items = [];
   CommandList.forEach((ele)=>{
     items.push([ele.id,ele.BaseCommand]);

@@ -3,7 +3,7 @@
     "username": "policy-db",
     "password": "config-gen",
     "database": "policy-gen-local",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
