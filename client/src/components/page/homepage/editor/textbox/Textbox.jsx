@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Textbox = () => {
+const Textbox = ({ text, onTextChange }) => {
   return (
-    <div>
-      <h2>Enter Your Text</h2>
-      <input type="text" placeholder="Type here..." />
-    </div>
+    <input
+      value={text}
+      onChange={(e) => onTextChange(e.target.value)}
+      placeholder="Type something..."
+    />
   );
 };
 
 export default Textbox;
-
