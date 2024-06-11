@@ -92,7 +92,9 @@ export default Options;
 */
 import './options.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import {useEffect,useState } from 'react';
+import Display from '../../display/Display';
+
 
 const Options = ({ onAppendText, resetNextCommand }) => {
   const [CommandList, setCommandList] = useState([]);
