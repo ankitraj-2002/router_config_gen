@@ -1,22 +1,25 @@
+
+
 import './options.css';
 import axios from 'axios';
 import {useEffect,useState } from 'react';
-import Display from '../../display/Display';
+// import Display from '../../display/Display';
 
 
 //Available command options::
-const Options = () => {
-  const [CommandList,setCommandList] = useState([]);
-const [CommandString,setCommandString] = useState("");
+const Options = ({onAppendText}) => {
+const [CommandList,setCommandList] = useState([]);
+// const [CommandString,setCommandString] = useState("");
 
   useEffect(() =>{
     axios.get("http://localhost:3001/BaseCommands").then((response) =>{
       setCommandList(response.data);
     })
   },[]);
+
   const onbuttonclick = (item)=> {
-    setCommandString(item[1])
-    
+    // setCommandString(item[1]);
+    onAppendText(item[1]);
   };
   const ButtonList= ({ items }) => {
     return (
@@ -43,3 +46,5 @@ const [CommandString,setCommandString] = useState("");
 };
 
 export default Options;
+
+
