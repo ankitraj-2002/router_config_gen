@@ -1,5 +1,5 @@
 module.exports = (sequelize,DataTypes) => {
-	const BaseCommands = sequelize.define("BaseCommands",{
+	const BaseTable = sequelize.define("BaseTable",{
 		BaseCommand: {
 			type: DataTypes.STRING,
 			allowNull:false,
@@ -13,11 +13,11 @@ module.exports = (sequelize,DataTypes) => {
 			allowNull:true,
 		}
 	});
-	// BaseCommands.associate = (models) => {
-	// 	BaseCommands.hasMany(models.systemCommands,{
+	// BaseTable.associate = (models) => {
+	// 	BaseTable.hasMany(models.systemCommands,{
 	// 		foreignKey:'LinkId',
 	// 		as:'systemCommands',
 	// 	});
 	// };
-	return BaseCommands;
+	return BaseTable;
 }

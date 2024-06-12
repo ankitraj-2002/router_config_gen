@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { systemCommands }  = require("../models");
+const { systemTable }  = require("../models");
 
 router.get("/",async (req,res) => {
-	const listSetCommands = await systemCommands.findAll();
+	const listSetCommands = await systemTable.findAll();
 	res.json(listSetCommands);
 });
 router.post("/",async (req,res) => {
 	const systemcommands = req.body;
-	await systemCommands.create(systemcommands);
+	await systemTable.create(systemcommands);
 	res.json(systemcommands);
 });
 
