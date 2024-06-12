@@ -5,8 +5,13 @@ module.exports = (sequelize,DataTypes) => {
 			allowNull:false,
 		},
 		UI_enabled: {
-			type:DataTypes.BOOLEAN,
+			type:DataTypes.STRING,
+			allowNull: true,
 		},
+		NextTable:{
+			type:DataTypes.STRING,
+			allowNull: true,
+		}
 	});
 	BaseCommands.associate = (models) => {
 		BaseCommands.hasMany(models.systemCommands,{
@@ -15,4 +20,4 @@ module.exports = (sequelize,DataTypes) => {
 		});
 	};
 	return BaseCommands;
-}
+}	

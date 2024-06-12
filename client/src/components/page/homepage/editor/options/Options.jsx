@@ -3,23 +3,28 @@
 import './options.css';
 import axios from 'axios';
 import {useEffect,useState } from 'react';
-// import Display from '../../display/Display';
+
 
 
 //Available command options::
 const Options = ({onAppendText}) => {
+
+// const Options = ({onAppendText}) => {
+
 const [CommandList,setCommandList] = useState([]);
-// const [CommandString,setCommandString] = useState("");
+const [basecommand, setBasecommand] = useState("BaseCommands");
 
   useEffect(() =>{
-    axios.get("http://localhost:3001/BaseCommands").then((response) =>{
+    axios.get(`http://localhost:3001/${basecommand}`).then((response) =>{
       setCommandList(response.data);
+      console.log(CommandList);
     })
   },[]);
 
   const onbuttonclick = (item)=> {
-    // setCommandString(item[1]);
     onAppendText(item[1]);
+    
+    setBasecommand(item[3]);
   };
   const ButtonList= ({ items }) => {
     return (
@@ -35,7 +40,7 @@ const [CommandList,setCommandList] = useState([]);
   //items list will contain the command options that is going to be displayed; 
   let items = [];
   CommandList.forEach((ele)=>{
-    items.push([ele.id,ele.BaseCommand]);
+    items.push([ele.id,ele.BaseCommand,ele.UI_enabled,ele.NextTable]);
   })
   return (
     <div className='options'>
