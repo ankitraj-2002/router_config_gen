@@ -1,18 +1,23 @@
 module.exports = (sequelize,DataTypes) => {
 	const systemCommands = sequelize.define("systemCommands",{
-		systemCommands: {
+		BaseCommand: {
 			type: DataTypes.STRING,
 			allowNull:false,
 		},
 		UI_enabled: {
-			type:DataTypes.BOOLEAN,
+			type:DataTypes.STRING,
+			allownull:true
 		},
+		NextTable: {
+			type:DataTypes.STRING,
+			allownull:true
+		}
 	});
-	systemCommands.associate = (models) => {
-		systemCommands.belongsTo(models.BaseCommands,{
-			foreignKey:'LinkId',
-			as:'BaseCommands',
-		});
-	};
+	// systemCommands.associate = (models) => {
+	// 	systemCommands.belongsTo(models.BaseCommands,{
+	// 		foreignKey:'LinkId',
+	// 		as:'BaseCommands',
+	// 	});
+	// };
 	return systemCommands;
 };
