@@ -8,6 +8,11 @@ module.exports = (sequelize,DataTypes) => {
 			type:DataTypes.BOOLEAN,
 		},
 	});
-
+	BaseCommands.associate = (models) => {
+		BaseCommands.hasMany(models.systemCommands,{
+			foreignKey:'LinkId',
+			as:'systemCommands',
+		});
+	};
 	return BaseCommands;
 }

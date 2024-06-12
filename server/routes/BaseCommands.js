@@ -4,12 +4,10 @@ const { BaseCommands }  = require("../models");
 
 router.get("/",async (req,res) => {
 	const listSetCommands = await BaseCommands.findAll();
-	res.json(listSetCommands);
 });
 router.post("/",async (req,res) => {
 	const basecommands = req.body;
 	await BaseCommands.create(basecommands);
-	res.json(basecommands);
 });
 
 
