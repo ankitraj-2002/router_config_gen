@@ -6,18 +6,18 @@ module.exports = (sequelize,DataTypes) => {
 		},
 		UI_enabled: {
 			type:DataTypes.STRING,
-			allowNull: true,
+			allowNull:true,
 		},
 		NextTable:{
 			type:DataTypes.STRING,
-			allowNull: true,
+			allowNull:true,
 		}
 	});
-	BaseCommands.associate = (models) => {
-		BaseCommands.hasMany(models.systemCommands,{
-			foreignKey:'LinkId',
-			as:'systemCommands',
-		});
-	};
+	// BaseCommands.associate = (models) => {
+	// 	BaseCommands.hasMany(models.systemCommands,{
+	// 		foreignKey:'LinkId',
+	// 		as:'systemCommands',
+	// 	});
+	// };
 	return BaseCommands;
 }	

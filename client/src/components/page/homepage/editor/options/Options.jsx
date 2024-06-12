@@ -1,9 +1,7 @@
-
-
 import './options.css';
 import axios from 'axios';
 import {useEffect,useState } from 'react';
-
+// import Display from '../../display/Display';
 
 
 //Available command options::
@@ -12,19 +10,27 @@ const Options = ({onAppendText}) => {
 // const Options = ({onAppendText}) => {
 
 const [CommandList,setCommandList] = useState([]);
-const [basecommand, setBasecommand] = useState("BaseCommands");
+const [NextCommand,setNextCommand] = useState("BaseCommands");
 
+
+console.log(NextCommand);
   useEffect(() =>{
-    axios.get(`http://localhost:3001/${basecommand}`).then((response) =>{
+    axios.get(`http://localhost:3001/${NextCommand}`).then((response) =>{
       setCommandList(response.data);
-      console.log(CommandList);
+      // console.log(CommandList);
     })
-  },[]);
+
+  },[NextCommand]);
 
   const onbuttonclick = (item)=> {
+    if(item[2]){
+      <input placeholder={item[1]+item[2]}></input>
+    }
     onAppendText(item[1]);
-    
-    setBasecommand(item[3]);
+    if(item[3]){
+      setNextCommand(item[3]);
+      // console.log(NextCommand);
+    }
   };
   const ButtonList= ({ items }) => {
     return (
@@ -42,6 +48,7 @@ const [basecommand, setBasecommand] = useState("BaseCommands");
   CommandList.forEach((ele)=>{
     items.push([ele.id,ele.BaseCommand,ele.UI_enabled,ele.NextTable]);
   })
+  console.log(items);
   return (
     <div className='options'>
       <h1>List of Buttons</h1>
