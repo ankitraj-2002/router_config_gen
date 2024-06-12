@@ -9,11 +9,11 @@ app.use(cors());
 
 const db = require("./models");
 
-const setBaseCommands = require("./routes/BaseCommands");
-const setSystemCommands = require("./routes/systemCommands.js");
+const setBaseCommands = require("./routes/BaseTable");
+const setSystemCommands = require("./routes/systemTable");
 
-app.use("/BaseCommands",setBaseCommands);
-app.use("/systemCommands",setSystemCommands);
+app.use("/BaseTable",setBaseCommands);
+app.use("/systemTable",setSystemCommands);
 
 
 db.sequelize.sync().then(() =>{
