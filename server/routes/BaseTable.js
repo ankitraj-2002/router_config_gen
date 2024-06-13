@@ -1,16 +1,16 @@
 
 const express = require("express");
 const router = express.Router();
-const { BaseCommands }  = require("../models");
+const { BaseTable }  = require("../models");
 
 
 router.get("/",async (req,res) => {
-	const listSetCommands = await BaseCommands.findAll();
+	const listSetCommands = await BaseTable.findAll();
 	res.json(listSetCommands);
 });
 router.post("/",async (req,res) => {
 	const basecommands = req.body;
-	await BaseCommands.create(basecommands);
+	await BaseTable.create(basecommands);
 	res.json(basecommands);
 });
 
