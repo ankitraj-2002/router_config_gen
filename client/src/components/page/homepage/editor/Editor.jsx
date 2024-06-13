@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './editor.css';
 import Textbox from './textbox/Textbox';
 import Options from './options/Options';
@@ -9,7 +9,9 @@ const Editor = () => {
   const [showTextbox, setShowTextbox] = useState(false);
   const [appendedText, setAppendedText] = useState('');
   const [inputText, setInputText] = useState('');
-  const [appendLine,setAppendLine] = useState('');
+  const [appendLine, setAppendLine] = useState('');
+  const resetNextCommand = useRef(null);
+
   const handleClick = () => {
     setShowTextbox(true);
   };
@@ -19,26 +21,30 @@ const Editor = () => {
   };
 
   const handlePushText = () => {
-    setAppendedText((prevText) => prevText + inputText+ ' ');
+    setAppendedText((prevText) => prevText + inputText + ' ');
     setInputText(''); // Clear the text box
     setShowTextbox(false);
   };
+
   const handleAppendText = (text) => {
     setAppendedText((prevText) => prevText + text + ' ');
     console.log(appendedText);
   };
+
   const handleAddNewline = () => {
-    setAppendLine((prevline) => prevline + appendedText +'\n');
+    setAppendLine((prevLine) => prevLine + appendedText + '\n');
     console.log(appendedText);
     setAppendedText('');
     console.log(appendLine);
+    if (resetNextCommand.current) {
+      resetNextCommand.current();
+    }
   };
-
 
   return (
     <div>
-      <Display CommandLine = {appendLine}  />
-      <CurrentCommandDisplay commandString={appendedText}/>
+      <Display CommandLine={appendLine} />
+      <CurrentCommandDisplay commandString={appendedText} />
       {showTextbox ? (
         <>
           <Textbox text={inputText} onTextChange={handleTextChange} />
@@ -46,9 +52,9 @@ const Editor = () => {
         </>
       ) : (
         <>
-          <Options onAppendText = {handleAppendText} />
+          <Options onAppendText={handleAppendText} resetNextCommand={resetNextCommand} />
           <button className="my-custom-button" onClick={handleClick}>
-            Don't see the required command... Add mannually form here
+            Don't see the required command... Add manually from here
           </button>
           <button className="my-custom-button" onClick={handleAddNewline}>
             Next-Command
