@@ -105,7 +105,7 @@ const Options = ({ onAppendText }) => {
     return (
       <div className="button">
         {items.map((item, index) => (
-          <button key={index} onClick={() => onbuttonclick(item)}>
+          <button className = "button" key={index} onClick={() => onbuttonclick(item)}>
             {item[1]}
           </button>
         ))}
@@ -121,7 +121,7 @@ const Options = ({ onAppendText }) => {
 
   return (
     <div className='options'>
-      <h1>List of Buttons</h1>
+      <h1 id = 'heading'>Select Commands:</h1>
       <ButtonList items={items} />
       {showTextbox && (
         <div>
@@ -130,6 +130,7 @@ const Options = ({ onAppendText }) => {
             value={textboxValue}
             onChange={handleTextboxChange}
             placeholder="Enter your input"
+            className="textbox"
           />
           <button onClick={handleTextboxSubmit}>Submit</button>
         </div>

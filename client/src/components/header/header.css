@@ -1,6 +1,26 @@
-.header{
-    position: sticky;
-    top: 0;
-    height: 10vh;
-    background-color: cornflowerblue;
-}
+.header {
+    background-color: #c0c0c0; /* Light grey background */
+    color: #000000; /* Black text color */
+    font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
+    padding: 10px 20px;
+    border: 2px solid #808080; /* Darker grey border */
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
+    text-align: center;
+    margin: 20px auto;
+    width: fit-content;
+  }
+  
+  .header-text {
+    background: linear-gradient(to right, #fff, #dcdcdc);
+    padding: 5px 10px;
+    border: 1px solid #808080;
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 0px #fff, inset -1px -1px 0px #dcdcdc;
+  }
+  
+  .header:hover {
+    background-color: #a8a8a8; /* Slightly darker grey on hover */
+    cursor: default;
+  }
+  

@@ -1,9 +1,12 @@
-import React from 'react'
-import './header.css'
-export default function header() {
+import React from 'react';
+import './header.css';
+
+export default function Header() { // Component name capitalized
   return (
     <div className='header'>
-      Header
+      <div className='header-text'>
+        Configuration_Display:
+      </div>
     </div>
-  )
+  );
 }

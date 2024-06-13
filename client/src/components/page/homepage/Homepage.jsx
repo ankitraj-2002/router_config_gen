@@ -1,11 +1,11 @@
 import React from 'react'
-// import Display from  './display/Display'
 import Editor from './editor/Editor'
+import './editor/editor.css';
+
 export default function Homepage() {
   return (
     <div className='homepage'>
-      {/* <Display /> */}
-      <Editor />
+         <Editor />
     </div>
   )
 }

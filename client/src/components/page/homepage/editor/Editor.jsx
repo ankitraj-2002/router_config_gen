@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './editor.css';
 import Textbox from './textbox/Textbox';
 import Options from './options/Options';
-import Display from '../display/Display';
+import Display from './display/Display';
 import CurrentCommandDisplay from './curcmddisp/CurrentCommandDisplay';
+// import './curcmddisp.css';
+import './curcmddisp/curcmddisp.css';
 
 const Editor = () => {
   const [showTextbox, setShowTextbox] = useState(false);
@@ -35,28 +37,58 @@ const Editor = () => {
   };
 
 
-  return (
-    <div>
-      <Display CommandLine = {appendLine}  />
-      <CurrentCommandDisplay commandString={appendedText}/>
+//   return (<>
+//     <div className = "left-panel">
+//       <Display CommandLine = {appendLine}  />
+//     </div>
+//     <div className = "right-panel">
+//       <CurrentCommandDisplay commandString={appendedText}/>
+//       {showTextbox ? (
+//         <>
+//           <Textbox text={inputText} onTextChange={handleTextChange} />
+//           <button onClick={handlePushText}>Push Text</button>
+//         </>
+//       ) : (
+//         <>
+//           <Options onAppendText = {handleAppendText} />
+//           <button className="button" onClick={handleClick}>
+//             Add Manually
+//           </button>
+//           <button className="button" onClick={handleAddNewline}>
+//             Next-Command
+//           </button>
+//         </>
+//       )}
+//     </div>
+//     </>
+//   );
+// };
+return (
+  <>
+    <div className="left-panel">
+      <Display CommandLine={appendLine} />
+    </div>
+    <div className="right-panel">
+      <CurrentCommandDisplay commandString={appendedText} />
       {showTextbox ? (
         <>
           <Textbox text={inputText} onTextChange={handleTextChange} />
           <button onClick={handlePushText}>Push Text</button>
         </>
       ) : (
-        <>
-          <Options onAppendText = {handleAppendText} />
-          <button className="my-custom-button" onClick={handleClick}>
-            Don't see the required command... Add mannually form here
+        <div className="button-container">
+          <Options onAppendText={handleAppendText} />
+          <button className="button" onClick={handleClick}>
+            Add Manually
           </button>
-          <button className="my-custom-button" onClick={handleAddNewline}>
+          <button className="button" onClick={handleAddNewline}>
             Next-Command
           </button>
-        </>
+        </div>
       )}
     </div>
-  );
+  </>
+);
 };
 
 export default Editor;
