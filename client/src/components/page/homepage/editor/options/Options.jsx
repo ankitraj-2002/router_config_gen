@@ -11,7 +11,7 @@
 
 // console.log(NextCommand);
 //   useEffect(() =>{
-//     axios.get(`http://localhost:3001/${NextCommand}`).then((response) =>{
+//     axios.get(http://localhost:3001/${NextCommand}).then((response) =>{
 //       setCommandList(response.data);
 //       // console.log(CommandList);
 //     })
@@ -57,25 +57,51 @@
 
 import './options.css';
 import axios from 'axios';
-import {useEffect,useState } from 'react';
-import Display from '../../display/Display';
+import { useEffect, useState } from 'react';
 
+// Available command options::
+const Options = ({ onAppendText }) => {
+  const [CommandList, setCommandList] = useState([]);
+  const [NextCommand, setNextCommand] = useState("BaseTable");
+  const [showTextbox, setShowTextbox] = useState(false); // State to control textbox visibility
+  const [textboxValue, setTextboxValue] = useState(''); // State to capture textbox input
 
-//Available command options::
-const Options = () => {
-  const [CommandList,setCommandList] = useState([]);
-const [CommandString,setCommandString] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/${NextCommand}`);
+        setCommandList(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
 
-  useEffect(() =>{
-    axios.get("http://localhost:3001/BaseCommands").then((response) =>{
-      setCommandList(response.data);
-    })
-  },[]);
-  const onbuttonclick = (item)=> {
-    setCommandString(item[1])
-    
+    fetchData();
+  }, [NextCommand]);
+
+  const onbuttonclick = (item) => {
+    onAppendText(item[1]);
+    if (item[3]) {
+      setNextCommand(item[3]);
+    }
+    // Show textbox if UI_enabled is not null
+    if(item[2]){
+      console.log("YES NULL");
+    }
+    setShowTextbox(item[2] !== null);
   };
-  const ButtonList= ({ items }) => {
+
+  const handleTextboxChange = (event) => {
+    setTextboxValue(event.target.value);
+  };
+
+  const handleTextboxSubmit = () => {
+    onAppendText(textboxValue);
+    setTextboxValue(''); // Clear the textbox after submission
+    setShowTextbox(false); // Hide the textbox after submission
+  };
+
+  const ButtonList = ({ items }) => {
     return (
       <div className="button">
         {items.map((item, index) => (
@@ -113,3 +139,4 @@ const [CommandString,setCommandString] = useState("");
 };
 
 export default Options;
+
