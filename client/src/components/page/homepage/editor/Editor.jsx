@@ -63,25 +63,54 @@ const Editor = () => {
 //     </>
 //   );
 // };
+// return (
+//   <>
+//     <div className="left-panel">
+//       <Display CommandLine={appendLine} />
+//     </div>
+//     <div className="right-panel">
+//       <CurrentCommandDisplay commandString={appendedText} />
+//       {showTextbox ? (
+//         <>
+//           <Textbox text={inputText} onTextChange={handleTextChange} />
+//           <button onClick={handlePushText}>Push Text</button>
+//         </>
+//       ) : (
+//         <div className="button-container">
+//           <Options onAppendText={handleAppendText} />
+//           <button className="button" onClick={handleClick}>
+//             Add Manually
+//           </button>
+//           <button className="button" onClick={handleAddNewline}>
+//             Next-Command
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   </>
+// );
+// };
+
+// export default Editor;
 return (
   <>
-    <div className="left-panel">
+    <div className='left-panel'>
       <Display CommandLine={appendLine} />
     </div>
-    <div className="right-panel">
+    <div className='right-panel'>
       <CurrentCommandDisplay commandString={appendedText} />
       {showTextbox ? (
         <>
           <Textbox text={inputText} onTextChange={handleTextChange} />
-          <button onClick={handlePushText}>Push Text</button>
+          <button onClick={handlePushText} className='button'>Push Text</button>
         </>
       ) : (
-        <div className="button-container">
+        <div className='options-container'>
           <Options onAppendText={handleAppendText} />
-          <button className="button" onClick={handleClick}>
+          <button className='button' onClick={handleClick}>
             Add Manually
           </button>
-          <button className="button" onClick={handleAddNewline}>
+          <button className='button' onClick={handleAddNewline}>
             Next-Command
           </button>
         </div>
