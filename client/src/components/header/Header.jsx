@@ -5,7 +5,7 @@ export default function Header() { // Component name capitalized
   return (
     <div className='header'>
       <div className='header-text'>
-        Configuration_Display:
+        Configuration Display
       </div>
     </div>
   );

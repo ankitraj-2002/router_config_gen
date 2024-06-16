@@ -85,7 +85,7 @@ const Options = ({ onAppendText }) => {
 // export default Options;
 return (
   <div className='options'>
-    <h1 id='heading'>Select Commands:</h1>
+    <h1 id='heading'>Select Commands</h1>
     <ButtonList items={items} />
     {showTextbox && (
       <div>
