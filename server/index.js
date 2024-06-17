@@ -9,17 +9,27 @@ app.use(cors());
 
 const db = require("./models");
 
-//Route objects///
+/////Route objects/////
 const setCommands = require("./routes/setTable");
 const systemCommands = require("./routes/systemTable");
 const baseCommands = require("./routes/BaseTable");
-///////
+const portCommands = require("./routes/portTable");
+const consoleCommands = require("./routes/consoleTable");
+const auxiliaryCommands = require("./routes/auxiliaryTable");
+const usbCommands = require("./routes/usbTable");
+
+////*****////
 
 ////API endpoints//////
 app.use("/setTable",setCommands);
 app.use("/systemTable",systemCommands);
 app.use("/baseTable",baseCommands);
-////////
+app.use("/portTable",portCommands);
+app.use("/consoleTable",consoleCommands);
+app.use("/auxiliaryTable",auxiliaryCommands);
+app.use("/usbTable",usbCommands);
+
+////*****////
 
 
 
