@@ -9,11 +9,18 @@ app.use(cors());
 
 const db = require("./models");
 
-const setBaseCommands = require("./routes/BaseTable");
-const setSystemCommands = require("./routes/systemTable");
+//Route objects///
+const setCommands = require("./routes/setTable");
+const systemCommands = require("./routes/systemTable");
+const baseCommands = require("./routes/BaseTable");
+///////
 
-app.use("/BaseTable",setBaseCommands);
-app.use("/systemTable",setSystemCommands);
+////API endpoints//////
+app.use("/setTable",setCommands);
+app.use("/systemTable",systemCommands);
+app.use("/baseTable",baseCommands);
+////////
+
 
 
 db.sequelize.sync().then(() =>{

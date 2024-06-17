@@ -13,11 +13,5 @@ module.exports = (sequelize,DataTypes) => {
 			allowNull:true,
 		}
 	});
-	// BaseTable.associate = (models) => {
-	// 	BaseTable.hasMany(models.systemCommands,{
-	// 		foreignKey:'LinkId',
-	// 		as:'systemCommands',
-	// 	});
-	// };
 	return BaseTable;
 }

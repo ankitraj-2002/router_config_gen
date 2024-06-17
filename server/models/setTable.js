@@ -1,18 +1,18 @@
 module.exports = (sequelize,DataTypes) => {
-	const systemTable = sequelize.define("systemTable",{
+	const setTable = sequelize.define("setTable",{
 		BaseCommand: {
 			type: DataTypes.STRING,
 			allowNull:false,
 		},
 		UI_enabled: {
 			type:DataTypes.STRING,
-			allownull:true
+			allowNull:true,
 		},
-		NextTable: {
+		NextTable:{
 			type:DataTypes.STRING,
-			allownull:true
+			allowNull:true,
 		}
 	});
 	
-	return systemTable;
-};
+	return setTable;
+}
