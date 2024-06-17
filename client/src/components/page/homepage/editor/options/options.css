@@ -1,5 +1,20 @@
-.options{
-    margin-top: 2.5vh;
-    height: 22.5vh;
-    background-color: gold;
+.options {
+    background-color: #ffffff;
+    border: 2px solid #808080;
+    padding: 10px;
+    font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
+    margin: 10px 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+.options #heading {
+  background-color: #c0c0c0; /* Light grey background similar to Windows XP */
+  color: #000000; /* Black text color */
+  font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif; /* Windows XP-like fonts */
+  padding: 10px 20px;
+  border: 2px solid #808080; /* Darker grey border */
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
+  text-align: left; /* Align text to the left */
+  margin: 20px auto;
+  width: fit-content;
 }

@@ -150,38 +150,62 @@ const Options = ({ onAppendText, resetNextCommand }) => {
     }
   };
 
-  const ButtonList = ({ items }) => (
-    <div className="button">
-      {items.map((item, index) => (
-        <button key={index} onClick={() => onButtonClick(item)}>
-          {item[1]}
-        </button>
-      ))}
-    </div>
-  );
+  const ButtonList = ({ items }) => {
+    return (
+      <div className="button">
+        {items.map((item, index) => (
+          <button className = "button" key={index} onClick={() => onbuttonclick(item)}>
+            {item[1]}
+          </button>
+        ))}
+      </div>
+    );
+  };
 
   let items = [];
   CommandList.forEach((ele) => {
     items.push([ele.id, ele.BaseCommand, ele.UI_enabled, ele.NextTable]);
   });
 
-  return (
-    <div className='options'>
-      <h1>List of Buttons</h1>
-      <ButtonList items={items} />
-      {showTextbox && (
-        <div>
-          <input
-            type="text"
-            value={textboxValue}
-            onChange={handleTextboxChange}
-            placeholder={showTextboxPlaceholder}
-          />
-          <button onClick={handleTextboxSubmit}>Submit</button>
-        </div>
-      )}
-    </div>
-  );
+//   return (
+//     <div className='options'>
+//       <h1 id = 'heading'>Select Commands:</h1>
+//       <ButtonList items={items} />
+//       {showTextbox && (
+//         <div>
+//           <input
+//             type="text"
+//             value={textboxValue}
+//             onChange={handleTextboxChange}
+//             placeholder="Enter your input"
+//             className="textbox"
+//           />
+//           <button onClick={handleTextboxSubmit}>Submit</button>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Options;
+return (
+  <div className='options'>
+    <h1 id='heading'>Select Commands</h1>
+    <ButtonList items={items} />
+    {showTextbox && (
+      <div>
+        <input
+          type='text'
+          value={textboxValue}
+          onChange={handleTextboxChange}
+          placeholder='Enter your input'
+          className='textbox'
+        />
+        <button onClick={handleTextboxSubmit} className='button'>Submit</button>
+      </div>
+    )}
+  </div>
+);
 };
 
 export default Options;

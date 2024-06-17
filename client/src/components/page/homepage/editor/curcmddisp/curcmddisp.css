@@ -1,0 +1,14 @@
+.current-command-display {
+	background-color: #ffffff;
+	border: 2px solid #808080;
+	padding: 10px;
+	font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
+	margin: 50px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	width: 80%; /* Adjust width as per your layout needs */
+	max-width: 600px; /* Optional: Set a maximum width */
+	min-height: 9vh; /* Minimum height for initial appearance */
+	resize: none; /* Disable resize handle */
+	overflow-y: auto; /* Enable vertical scroll if needed */
+  }
+  

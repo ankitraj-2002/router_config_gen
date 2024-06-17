@@ -1,24 +1,71 @@
-.container {
-    position: relative;
-    height: 30vh;
-    /* 35% of the screen height */
-    margin-top: 2.5vh;
-    
-    border: 1px solid #ccc;
-    /* Optional: just to visualize the container */
+.button-container {
+  display: flex; /* Use flexbox to make buttons display in a row */
 }
-.button-left{
-    position: absolute;
-    /* left: 10px; */
-    margin-left: 5px;
-}
-.button-container-right {
-    position: absolute;
-    right: 10px;
-    margin-right: 10px;
-    top: 10px;
-} 
 
 .button {
-    margin-left: 10px;
+  background-color: #ece9d8;
+  color: #000;
+  border: 2px solid #808080;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
 }
+
+.button.button {
+  background-color: #dcdcdc;
+}
+
+.textbox {
+    background-color: #ffffff;
+	border: 2px solid #808080;
+	padding: 5px;
+	font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
+	width: 300px;
+	margin: 5px 0;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+.left-panel {
+    flex: 1; /* Take up 50% of the available space */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border: 2px solid #808080; /* Darker grey border */
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
+    margin: 20px;
+  }
+
+.right-panel {
+    flex: 1; /* Take up 50% of the available space */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border: 2px solid #808080; /* Darker grey border */
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.right-panel button,
+  .right-panel input {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #808080;
+    border-radius: 3px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
+  }
+  
+.right-panel button:hover,
+  .right-panel input:hover {
+    background-color: #dcdcdc;
+  }
+  
+  

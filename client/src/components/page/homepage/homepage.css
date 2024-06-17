@@ -1,5 +1,10 @@
-.homepage{
-    margin-top: 2.5vh;
-    height: 40vh;
-    background-color: brown;
-}
+.homepage {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: fit-content;
+  }
+  
