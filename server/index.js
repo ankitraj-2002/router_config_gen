@@ -19,6 +19,10 @@ const auxiliaryCommands = require("./routes/auxiliaryTable");
 const usbCommands = require("./routes/usbTable");
 const managementCommands = require("./routes/managementethernetTable");
 const flowControlCommands = require("./routes/flowControlTable");
+const rootauthenticationCommands = require("./routes/rootAuthenticationTable");
+const servicesCommands = require("./routes/servicesTable");
+const sshCommands = require("./routes/sshTable");
+
 
 ////*****////
 
@@ -32,6 +36,9 @@ app.use("/auxiliaryTable",auxiliaryCommands);
 app.use("/usbTable",usbCommands);
 app.use("/managementethernetTable",managementCommands);
 app.use("/flowControlTable",flowControlCommands);
+app.use("/rootAuthenticationTable",rootauthenticationCommands);
+app.use("/servicesTable",servicesCommands);
+app.use("/sshTable",sshCommands);
 
 ////*****////
 
