@@ -17,6 +17,8 @@ const portCommands = require("./routes/portTable");
 const consoleCommands = require("./routes/consoleTable");
 const auxiliaryCommands = require("./routes/auxiliaryTable");
 const usbCommands = require("./routes/usbTable");
+const managementCommands = require("./routes/managementethernetTable");
+const flowControlCommands = require("./routes/flowControlTable");
 
 ////*****////
 
@@ -28,6 +30,8 @@ app.use("/portTable",portCommands);
 app.use("/consoleTable",consoleCommands);
 app.use("/auxiliaryTable",auxiliaryCommands);
 app.use("/usbTable",usbCommands);
+app.use("/managementethernetTable",managementCommands);
+app.use("/flowControlTable",flowControlCommands);
 
 ////*****////
 
