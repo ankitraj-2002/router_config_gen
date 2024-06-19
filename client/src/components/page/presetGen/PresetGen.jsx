@@ -1,53 +1,37 @@
 import React, { useState } from 'react';
+import PresetGen from './PresetGen';
+import Homepage from '../homepage/Homepage';
+import ClassOfServiceInterface from './ClassOfServiceInterface';
+import ethernetSwitching from './ethernetSwitching';
 
-const PresetGen = () => {
-  const [interfaceName, setInterfaceName] = useState('');
-  const [shapingRate, setShapingRate] = useState('');
-  const [generatedCode, setGeneratedCode] = useState('');
+const components = {
+  ClassOfServiceInterface: ClassOfServiceInterface,
+  ethernetSwitching: ethernetSwitching,
+};
 
-  const handleGenerateCode = () => {
-    const code = `set class-of-service interfaces ${interfaceName} shaping-rate ${shapingRate}`;
-    setGeneratedCode(code);
+const DropdownRenderer = () => {
+  const [selectedComponent, setSelectedComponent] = useState('');
+
+  const handleChange = (event) => {
+    setSelectedComponent(event.target.value);
   };
+
+  const SelectedComponent = components[selectedComponent];
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Config Generator</h1>
-      <div style={{ marginBottom: '10px' }}>
-        <label>
-          Interface Name:
-          <input
-            type="text"
-            value={interfaceName}
-            onChange={(e) => setInterfaceName(e.target.value)}
-            placeholder="e.g., ge-0/0/6"
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
+      <h1>Select a Component</h1>
+      <select value={selectedComponent} onChange={handleChange}>
+        <option value="">--Select a Component--</option>
+        <option value="ClassOfServiceInterface">ClassOfServicesInterface</option>
+        <option value="ethernetSwitching">ethernetSwitching</option>
+
+      </select>
+      <div style={{ marginTop: '20px' }}>
+        {SelectedComponent && <SelectedComponent />}
       </div>
-      <div style={{ marginBottom: '10px' }}>
-        <label>
-          Shaping Rate:
-          <input
-            type="text"
-            value={shapingRate}
-            onChange={(e) => setShapingRate(e.target.value)}
-            placeholder="e.g., 20m"
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
-      </div>
-      <button onClick={handleGenerateCode} style={{ marginTop: '10px' }}>
-        Generate Code
-      </button>
-      {generatedCode && (
-        <div style={{ marginTop: '20px' }}>
-          <h2>Generated Code:</h2>
-          <pre>{generatedCode}</pre>
-        </div>
-      )}
     </div>
   );
 };
 
-export default PresetGen;
+export default DropdownRenderer;
