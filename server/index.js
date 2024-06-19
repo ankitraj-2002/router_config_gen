@@ -22,7 +22,7 @@ const flowControlCommands = require("./routes/flowControlTable");
 const rootauthenticationCommands = require("./routes/rootAuthenticationTable");
 const servicesCommands = require("./routes/servicesTable");
 const sshCommands = require("./routes/sshTable");
-
+const snmpCommands = require("./routes/snmpTable");
 
 ////*****////
 
@@ -39,6 +39,7 @@ app.use("/flowControlTable",flowControlCommands);
 app.use("/rootAuthenticationTable",rootauthenticationCommands);
 app.use("/servicesTable",servicesCommands);
 app.use("/sshTable",sshCommands);
+app.use("/snmpTable",snmpCommands);
 
 ////*****////
 
