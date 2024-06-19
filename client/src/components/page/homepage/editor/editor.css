@@ -1,5 +1,5 @@
 .button-container {
-  display: flex; /* Use flexbox to make buttons display in a row */
+  display: flex; 
 }
 
 .button {
@@ -28,22 +28,22 @@
   }
 
 .left-panel {
-    flex: 1; /* Take up 50% of the available space */
+    flex: 1; 
     padding: 20px;
-    background-color: #ffffff; /* White background */
-    border: 2px solid #808080; /* Darker grey border */
+    background-color: #ffffff; 
+    border: 2px solid #808080; 
     border-radius: 4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
-    margin: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+     margin: 20px; 
   }
 
 .right-panel {
-    flex: 1; /* Take up 50% of the available space */
+    flex: 1; 
     padding: 20px;
-    background-color: #ffffff; /* White background */
-    border: 2px solid #808080; /* Darker grey border */
+    background-color: #ffffff;
+    border: 2px solid #808080; 
     border-radius: 4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
     margin: 20px;
     display: flex;
     flex-direction: column;

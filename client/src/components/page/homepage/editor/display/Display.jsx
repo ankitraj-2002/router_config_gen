@@ -13,9 +13,13 @@ const Display = ({ CommandLine }) => {
   };
 
   return (
-    <div className='display'>
-      <button onClick={copyToClipboard} className='copy-button'>Copy All</button>
-      <pre>{CommandLine}</pre>
+    <div className="main-content">
+      <div className="display">
+        <div className="display-header">
+          <button onClick={copyToClipboard} className="copy-button">Copy All</button>
+        </div>
+        <pre>{CommandLine}</pre>
+      </div>
     </div>
   );
 };
