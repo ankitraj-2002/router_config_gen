@@ -74,11 +74,11 @@ const CommandGenerator = () => {
         style={{ marginTop: '10px' }}
         disabled={!filterName || !termNumber || !action}
       >
-        Generate Command
+        Generate Code
       </button>
       {generatedCommand.length > 0 && (
         <div style={{ marginTop: '20px' }}>
-          <h2>Generated Command:</h2>
+          <h2 style ={{display: 'inline-block'}}>Generated Codes:</h2>
 		  <button 
             onClick={handleCopyAll} 
             style={{ float: 'right', marginTop: '35px' }}
