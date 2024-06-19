@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import PresetGen from './PresetGen';
-import Homepage from '../homepage/Homepage';
 import ClassOfServiceInterface from './ClassOfServiceInterface';
-import ethernetSwitching from './ethernetSwitching';
+import EthernetSwitching from './EthernetSwitching';
+import Policer from './Policer';
 
 const components = {
   ClassOfServiceInterface: ClassOfServiceInterface,
-  ethernetSwitching: ethernetSwitching,
+  EthernetSwitching: EthernetSwitching,
+  Policer: Policer,
 };
 
 const DropdownRenderer = () => {
@@ -23,9 +23,9 @@ const DropdownRenderer = () => {
       <h1>Select a Component</h1>
       <select value={selectedComponent} onChange={handleChange}>
         <option value="">--Select a Component--</option>
-        <option value="ClassOfServiceInterface">ClassOfServicesInterface</option>
-        <option value="ethernetSwitching">ethernetSwitching</option>
-
+        <option value="ClassOfServiceInterface">Class_Of_Services_Interface</option>
+        <option value="EthernetSwitching">Ethernet_Switching</option>
+        <option value="Policer">Policer</option>
       </select>
       <div style={{ marginTop: '20px' }}>
         {SelectedComponent && <SelectedComponent />}
