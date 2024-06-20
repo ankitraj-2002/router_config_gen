@@ -3,19 +3,20 @@
 }
 
 .button {
-  background-color: #ece9d8;
-  color: #000;
-  border: 2px solid #808080;
+  /* background-color: #da1b14; */
+  color: rgba(0, 0, 0, 0.963);
+  border: 10px solid #efd304;
+  justify-content: center;
+  align-items: justify;
   border-radius: 3px;
   padding: 5px 10px;
   margin: 5px;
   cursor: pointer;
+  align-items: center;
   font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
 }
 
-.button.button {
-  background-color: #dcdcdc;
-}
+
 
 .textbox {
     background-color: #ffffff;
@@ -28,27 +29,29 @@
   }
 
 .left-panel {
+    max-height: 35vh;
     flex: 1; 
+    /* padding: 1.5vh; */
+    background-color: #151515; 
+    border: 2px solid #909090; 
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(15, 15, 15, 0.2); 
+    margin: 3.5vh; 
     padding: 20px;
-    background-color: #ffffff; 
-    border: 2px solid #808080; 
-    border-radius: 4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
-     margin: 20px; 
   }
 
 .right-panel {
     flex: 1; 
     padding: 20px;
-    background-color: #ffffff;
-    border: 2px solid #808080; 
-    border-radius: 4px;
+    background-color: #151515;
+    border: 2px solid #909090;
+    border-radius: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
-    margin: 20px;
+    margin: 3.5vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
   }
   
 .right-panel button,
@@ -56,9 +59,11 @@
     margin: 10px;
     padding: 5px 10px;
     font-size: 16px;
-    border: 1px solid #808080;
+    border: 1px solid #fff;
+    justify-content: center;
     border-radius: 3px;
-    background-color: #f0f0f0;
+
+    /* background-color: #e82222; */
     cursor: pointer;
     font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
   }
@@ -67,5 +72,3 @@
   .right-panel input:hover {
     background-color: #dcdcdc;
   }
-  
-  

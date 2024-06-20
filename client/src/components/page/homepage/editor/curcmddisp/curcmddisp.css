@@ -1,14 +1,24 @@
 .current-command-display {
-	background-color: #ffffff;
-	border: 2px solid #808080;
+	background-color: #454545;;
 	padding: 10px;
 	font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
-	margin: 50px;
+	border: none;
+	border-radius: 8px;
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-	width: 80%; /* Adjust width as per your layout needs */
-	max-width: 600px; /* Optional: Set a maximum width */
-	min-height: 9vh; /* Minimum height for initial appearance */
-	resize: none; /* Disable resize handle */
-	overflow-y: auto; /* Enable vertical scroll if needed */
+	min-height: 2vh; 
+	resize: none; 
+	overflow-y: auto; 
+	width: 90vw;
   }
-  
+/* .current-command-display {
+	    padding: 1.5vh;
+	    background-color: #454545;
+		border: none;
+		resize: none;
+	    color: #f1f1f1;
+	    border-radius: 8px;
+	    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	    overflow-y: auto;
+	    max-height: 16vh;
+		
+}  */

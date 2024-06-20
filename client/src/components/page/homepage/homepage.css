@@ -1,8 +1,9 @@
 .homepage {
-    padding: 20px;
-    background-color: #ffffff;
-    border: 2px solid #808080;
+    /* padding: 2vh; */
+    background-color: #000;
+    border: 2px solid ;
     border-radius: 4px;
+    border-color: white;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     margin: 20px auto;
     width: fit-content;

@@ -1,20 +1,29 @@
-.options {
-    background-color: #ffffff;
+/* .options {
+    background-color: #965f20;
     border: 2px solid #808080;
     padding: 10px;
     font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
     margin: 10px 0;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  }
+    width: 90vw;
+    justify-content: center;
+  } */
 .options #heading {
-  background-color: #c0c0c0; /* Light grey background similar to Windows XP */
-  color: #000000; /* Black text color */
-  font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif; /* Windows XP-like fonts */
-  padding: 10px 20px;
-  border: 2px solid #808080; /* Darker grey border */
-  border-radius: 4px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for 3D effect */
-  text-align: left; /* Align text to the left */
+  color: #fff;
+  font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif; 
+  padding: 1vh;
+  border: 2px solid #ffffff; 
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); 
+  text-align: left; 
   margin: 20px auto;
   width: fit-content;
+}
+.buttonlist{
+  background-color: black;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  border:5px #d31616;
+
+  border-radius: 8px;
 }

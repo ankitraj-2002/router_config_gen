@@ -57,9 +57,9 @@ const Options = ({ onAppendText, resetNextCommand }) => {
   };
 
   const ButtonList = ({ items }) => (
-    <div className="button">
+    <div className="buttonlist">
       {items.map((item, index) => (
-        <button key={index} onClick={() => onButtonClick(item)}>
+        <button className="buttonListbutton" key={index} onClick={() => onButtonClick(item)}>
           {item[1]}
         </button>
       ))}
@@ -73,7 +73,7 @@ const Options = ({ onAppendText, resetNextCommand }) => {
 
   return (
     <div className='options'>
-      <h1 id = "heading">Select Commands</h1>
+      <h3 id = "heading">Choose Command</h3>
       <ButtonList items={items} />
       {showTextbox && (
         <div>

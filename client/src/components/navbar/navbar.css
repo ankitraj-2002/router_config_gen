@@ -7,22 +7,23 @@
   align-items: center;
   margin-top: 0px;
   justify-content: space-between;
-  background-color: #333;
-  /* width: 100%; */
+  background-color: #ddd;
   padding: 10px;
   position: sticky;
   z-index: 1000;
   top: 0;
+  height: 7.5vh;
 
 }
 
 
 .logo {
-  height: 65px;
+  margin-left: 5%;
+  height: 7.5vh;
   /* Adjust the height as needed */
   width: 80px;
   /* Same as height to make it a circle */
-  border-radius: 50%;
+  /* border-radius: 50%; */
   justify-content: center;
   align-items: center;
   /* Makes the logo appear in a circle */
@@ -30,6 +31,8 @@
 
 /* Styling for the unordered list */
 .navbar ul {
+  flex: 1;
+    text-align: center;
   display: flex;
   list-style-type: none;
   /* Removes default list styling */
@@ -43,9 +46,12 @@
 
 /* Styling for list items */
 .navbar li {
-  margin-left: 20px;
+  margin: 10px;
+  font-size: 500px;
+  /* margin-left: 20%; */
+  /* margin-right: 10%; */
   /* Spacing between list items */
-  color: white;
+  color: black;
   /* Text color */
   font-size: 16px;
   /* Font size */
