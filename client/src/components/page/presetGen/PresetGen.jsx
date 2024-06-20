@@ -7,6 +7,7 @@ import delete_interface from './delete_interface';
 import Delete_class_of_service_interface from './Delete_class_of_service_interface';
 import Interface_description from './Interface_description';
 import RoutingOption from './RoutingOption';
+import MonitoringOptions from './MonitoringOptions';
 
 const components = {
   ClassOfServiceInterface: ClassOfServiceInterface,
@@ -17,6 +18,7 @@ const components = {
   Delete_class_of_service_interface: Delete_class_of_service_interface,
   Interface_description: Interface_description,
   RoutingOption: RoutingOption,
+  MonitoringOptions: MonitoringOptions,
 };
 
 const DropdownRenderer = () => {
@@ -41,6 +43,7 @@ const DropdownRenderer = () => {
         <option value="Delete_class_of_service_interface">Delete_class_of_service_interface</option>
         <option value="Interface_description">Interface_description</option>
         <option value="RoutingOption">Routing-Options</option>
+        <option value="MonitoringOptions">Monitoring-Options</option>
 
       </select>
       <div style={{ marginTop: '20px' }}>
