@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 
 const DeleteCommandGenerator = () => {
   const [interfaceName, setInterfaceName] = useState('');
-  const [addressFamily,setaddressFamily] = useState('');
-  const [filterName, setFilterName] = useState('');
+  const [shapingRate, setShapingRate] = useState('');
   const [generatedCommands, setGeneratedCommands] = useState([]);
 
   const handleGenerateCommands = () => {
-    if(interfaceName && addressFamily && filterName){
-      const commands = `delete interfaces ${interfaceName} unit 0 family ${addressFamily} filter input ${filterName}`;
-      setGeneratedCommands(previous => [...previous,commands]);
+    if(interfaceName && shapingRate){
+      const commands = `delete class-of-service interfaces ${interfaceName} shaping-rate ${shapingRate}`;
+      setGeneratedCommands(previous =>[...previous,commands]);
     }
   };
 
@@ -29,7 +28,7 @@ const DeleteCommandGenerator = () => {
       <h1>Juniper Delete Command Generator</h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
-          Interface Name:
+          Class_Of_Service_Interface Name:
           <input
             type="text"
             value={interfaceName}
@@ -42,27 +41,12 @@ const DeleteCommandGenerator = () => {
       </div>
       <div style={{ marginBottom: '10px' }}>
         <label>
-          Family:
-          <select
-            value={addressFamily}
-            onChange={(e) => setaddressFamily(e.target.value)}
-            style={{ marginLeft: '10px' }}
-            required
-          >
-            <option value="">--Select Family--</option>
-            <option value="ethernet-switching">ethernet-switching</option>
-            <option value="inet">inet</option>
-          </select>
-        </label>
-      </div>
-      <div style={{ marginBottom: '10px' }}>
-        <label>
-          Filter Name:
+          Shaping Rate:
           <input
             type="text"
-            value={filterName}
-            onChange={(e) => setFilterName(e.target.value)}
-            placeholder="e.g., Filter-20m"
+            value={shapingRate}
+            onChange={(e) => setShapingRate(e.target.value)}
+            placeholder="e.g., 20m"
             style={{ marginLeft: '10px' }}
             required
           />
@@ -71,7 +55,7 @@ const DeleteCommandGenerator = () => {
       <button
         onClick={handleGenerateCommands}
         style={{ marginTop: '10px' }}
-        disabled={!interfaceName || !addressFamily || !filterName}
+        disabled={!interfaceName || !shapingRate}
       >
         Generate Commands
       </button>
