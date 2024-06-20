@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 const CommandGenerator = () => {
   const [filterName, setFilterName] = useState('');
+  const [addressFamily,setaddressFamily] = useState('');
   const [termNumber, setTermNumber] = useState('');
   const [action, setAction] = useState('');
   const [generatedCommand, setGeneratedCommand] = useState([]);
 
   const handleGenerateCommand = () => {
-	if(filterName && termNumber && action){
-		const command = `set firewall family ethernet-switching filter ${filterName} term ${termNumber} then ${action}`;
+	if(filterName && termNumber && action && addressFamily){
+		const command = `set firewall family ${addressFamily} filter ${filterName} term ${termNumber} then ${action}`;
 		setGeneratedCommand(previous => [...previous,command]);
 	}
   };
@@ -42,7 +43,7 @@ const CommandGenerator = () => {
       </div>
       <div style={{ marginBottom: '10px' }}>
         <label>
-          Term Number:
+          Term Name:
           <input
             type="text"
             value={termNumber}
@@ -51,6 +52,21 @@ const CommandGenerator = () => {
             style={{ marginLeft: '10px' }}
             required
           />
+        </label>
+      </div>
+      <div style={{ marginBottom: '10px' }}>
+        <label>
+          Family:
+          <select
+            value={addressFamily}
+            onChange={(e) => setaddressFamily(e.target.value)}
+            style={{ marginLeft: '10px' }}
+            required
+          >
+            <option value="">--Select Family--</option>
+            <option value="ethernet-switching">ethernet-switching</option>
+            <option value="inet">inet</option>
+          </select>
         </label>
       </div>
       <div style={{ marginBottom: '10px' }}>
@@ -72,7 +88,7 @@ const CommandGenerator = () => {
       <button
         onClick={handleGenerateCommand}
         style={{ marginTop: '10px' }}
-        disabled={!filterName || !termNumber || !action}
+        disabled={!filterName || !termNumber || !action || !addressFamily}
       >
         Generate Code
       </button>

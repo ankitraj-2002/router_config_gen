@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import ClassOfServiceInterface from './ClassOfServiceInterface';
-import EthernetSwitching from './EthernetSwitching';
+import Firewall from './Firewall';
 import Policer from './Policer';
+import Interface from './Interface';
+import delete_interface from './delete_interface';
 
 const components = {
   ClassOfServiceInterface: ClassOfServiceInterface,
-  EthernetSwitching: EthernetSwitching,
+  Firewall: Firewall,
   Policer: Policer,
+  Interface: Interface,
+  delete_interface: delete_interface,
 };
 
 const DropdownRenderer = () => {
@@ -24,8 +28,11 @@ const DropdownRenderer = () => {
       <select value={selectedComponent} onChange={handleChange}>
         <option value="">--Select a Component--</option>
         <option value="ClassOfServiceInterface">Class_Of_Services_Interface</option>
-        <option value="EthernetSwitching">Ethernet_Switching</option>
+        <option value="Firewall">Firewall</option>
         <option value="Policer">Policer</option>
+        <option value="Interface">Interface</option>
+        <option value="delete_interface">delete_interface</option>
+
       </select>
       <div style={{ marginTop: '20px' }}>
         {SelectedComponent && <SelectedComponent />}
