@@ -5,6 +5,8 @@ import Policer from './Policer';
 import Interface from './Interface';
 import delete_interface from './delete_interface';
 import Delete_class_of_service_interface from './Delete_class_of_service_interface';
+import Interface_description from './Interface_description';
+import RoutingOption from './RoutingOption';
 
 const components = {
   ClassOfServiceInterface: ClassOfServiceInterface,
@@ -13,6 +15,8 @@ const components = {
   Interface: Interface,
   delete_interface: delete_interface,
   Delete_class_of_service_interface: Delete_class_of_service_interface,
+  Interface_description: Interface_description,
+  RoutingOption: RoutingOption,
 };
 
 const DropdownRenderer = () => {
@@ -35,6 +39,9 @@ const DropdownRenderer = () => {
         <option value="Interface">Interface</option>
         <option value="delete_interface">delete_interface</option>
         <option value="Delete_class_of_service_interface">Delete_class_of_service_interface</option>
+        <option value="Interface_description">Interface_description</option>
+        <option value="RoutingOption">Routing-Options</option>
+
       </select>
       <div style={{ marginTop: '20px' }}>
         {SelectedComponent && <SelectedComponent />}
