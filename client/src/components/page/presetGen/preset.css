@@ -1,0 +1,32 @@
+.componentListHeader{
+    background-color: #ccc;
+    margin: 10px auto;
+        flex: 1;
+        /* padding: 1.5vh; */
+        /* background-color: #151515; */
+        border: 2px solid #909090;
+        border-radius: 20px;
+        box-shadow: 9px 9px 9px rgba(15, 15, 15, 0.2);
+        margin: 3.5vh;
+        padding: 10px;
+        display: flex;
+        /* margin-left: 10px; */
+        align-items: center;
+        justify-content: center;
+}
+.componentListItem{
+    margin-left: 10px;
+}
+
+.selectedComponent{
+    background-color: #eff0e5;
+    margin: 10px auto;
+    padding: 10px;
+    flex: 1;
+    border: 2px solid #909090;
+    border-radius: 20px;
+    box-shadow: 9px 9px 9px rgba(15, 15, 15, 0.2);
+    margin: 3.5vh;
+    padding: 20px;
+}
+

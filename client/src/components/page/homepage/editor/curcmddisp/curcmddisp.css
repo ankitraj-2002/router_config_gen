@@ -8,7 +8,8 @@
 	min-height: 2vh; 
 	resize: none; 
 	overflow-y: auto; 
-	width: 90vw;
+	
+	margin: 1vh;
   }
 /* .current-command-display {
 	    padding: 1.5vh;

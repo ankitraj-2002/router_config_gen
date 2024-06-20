@@ -25,20 +25,23 @@ const DropdownRenderer = () => {
   const SelectedComponent = components[selectedComponent];
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Select a Component</h1>
-      <select value={selectedComponent} onChange={handleChange}>
-        <option value="">--Select a Component--</option>
-        <option value="ClassOfServiceInterface">Class_Of_Services_Interface</option>
-        <option value="Firewall">Firewall</option>
-        <option value="Policer">Policer</option>
-        <option value="Interface">Interface</option>
-        <option value="delete_interface">delete_interface</option>
-        <option value="Delete_class_of_service_interface">Delete_class_of_service_interface</option>
+    <div className = "preSetMain">
+      <div className="componentListHeader">
+      <h3 className="componentListItem">Select a Component</h3>
+      <select className="componentListItem" value={selectedComponent} onChange={handleChange}>
+        <option className = "listItems" value="">--Select a Component--</option>
+        <option className = "listItems" value="ClassOfServiceInterface">Class_Of_Services_Interface</option>
+        <option className = "listItems" value="Firewall">Firewall</option>
+        <option className = "listItems" value="Policer">Policer</option>
+        <option className = "listItems" value="Interface">Interface</option>
+        <option className = "listItems" value="delete_interface">delete_interface</option>
+        <option className = "listItems" value="Delete_class_of_service_interface">Delete_class_of_service_interface</option>
       </select>
-      <div style={{ marginTop: '20px' }}>
-        {SelectedComponent && <SelectedComponent />}
       </div>
+      {SelectedComponent &&
+      <div className='selectedComponent'>
+         <SelectedComponent />
+      </div> }
     </div>
   );
 };
