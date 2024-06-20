@@ -7,8 +7,8 @@ export default function navbar() {
     <div className='navbar'>
        <img src={stpilogo} alt='' className='logo' />     
       <ul>
-        <Link to="/presetGen" style={{textDecoration: "none", color:"inherit"}}><li>PresetGen</li></Link>
-        <li><Link to= "/homepage"style={{textDecoration: "none", color:"inherit"}}>HomePage</Link></li>
+        <li><Link to="/presetGen" style={{textDecoration: "none", color:"inherit"}}>PresetGen</Link></li>
+        <li><Link to= "/homepage"style={{textDecoration: "none", color:"inherit"}}>ConfigGen</Link></li>
       </ul>
     </div>
   );
