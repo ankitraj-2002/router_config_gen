@@ -10,12 +10,12 @@ function App() {
       
       <Router>
         <Navbar />
-        {/* <Link to="/presetGen">PresetGen</Link>
-        <Link to= "/homepage">HomePage</Link> */}
+        <div  className = "pages">
         <Routes>
           <Route path="/homepage" element={<Homepage />}/>
           <Route path="/presetGen" element={<PresetGen />}/>
         </Routes>
+        </div>
       </Router>
     </div>
   );

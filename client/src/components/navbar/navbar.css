@@ -3,7 +3,7 @@
 /* General styling for the navbar */
 .navbar {
   display: flex;
-  margin: 20px auto;
+  /* margin: 20px auto; */
   align-items: center;
   margin-top: 0px;
   justify-content: space-between;

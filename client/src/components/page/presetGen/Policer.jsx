@@ -84,7 +84,7 @@ const Policer = () => {
           >
             Copy All
           </button>
-          <pre style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
+          <pre className="generatecommand" style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
         </div>
       )}
     </div>

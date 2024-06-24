@@ -30,3 +30,7 @@
     padding: 20px;
 }
 
+.generatecommand{
+    max-height: 50vh;
+    overflow: auto;
+}

@@ -83,7 +83,7 @@ const Interface = () => {
           >
             Copy All
           </button>
-          <pre style = {{clear :'both'}}>{generatedCommand.join('\n')}</pre>
+          <pre className="generatecommand" style = {{clear :'both'}}>{generatedCommand.join('\n')}</pre>
         </div>
       )}
     </div>
