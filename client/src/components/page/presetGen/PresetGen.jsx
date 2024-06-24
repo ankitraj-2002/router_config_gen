@@ -42,9 +42,9 @@ const DropdownRenderer = () => {
         <option className = "listItems" value="Interface">Interface</option>
         <option className = "listItems" value="delete_interface">delete_interface</option>
         <option className = "listItems" value="Delete_class_of_service_interface">Delete_class_of_service_interface</option>
-        <option value="Interface_description">Interface_description</option>
-        <option value="RoutingOption">Routing-Options</option>
-        <option value="MonitoringOptions">Monitoring-Options</option>
+        <option className = "listItems" value="MonitoringOptions">Monitoring-Options</option>
+        <option className = "listItems" value="RoutingOption">Routing-Options</option>
+        <option className = "listItems" value="Interface_description">Interface_description</option>
 
       </select>
       </div>
