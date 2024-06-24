@@ -25,7 +25,6 @@ const Policer = () => {
         console.error('Failed to copy!', err);
       });
   };
-
   return (
     <div style={{ padding: '20px' }}>
       <h1>Juniper Policer Command Generator</h1>
