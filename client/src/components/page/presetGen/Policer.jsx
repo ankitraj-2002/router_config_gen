@@ -12,7 +12,7 @@ const Policer = () => {
       `set firewall policer ${policerName} if-exceeding burst-size-limit ${burstSizeLimit}`,
       `set firewall policer ${policerName} then discard`
     ];
-    setGeneratedCommands(commands);
+    setGeneratedCommands(previous=>[...previous, ...commands]);
   };
 
   const handleCopyAll = () => {
