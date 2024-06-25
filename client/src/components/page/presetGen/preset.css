@@ -31,6 +31,6 @@
 }
 
 .generatecommand{
-    max-height: 50vh;
+    max-height: 25vh;
     overflow: auto;
 }

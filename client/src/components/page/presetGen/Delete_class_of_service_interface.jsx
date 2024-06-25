@@ -25,7 +25,7 @@ const DeleteCommandGenerator = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Delete Command Generator</h1>
+      <h1>Delete_class_of_service_interface Commands </h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
           Class_Of_Service_Interface Name:

@@ -25,7 +25,7 @@ const DeleteCommandGenerator = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Delete Command Generator</h1>
+      <h1>Interface_description Command Generator</h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
           Interface Name:
@@ -68,7 +68,7 @@ const DeleteCommandGenerator = () => {
           >
             Copy All
           </button>
-          <pre style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
+          <pre className="generatecommand" style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
         </div>
       )}
     </div>

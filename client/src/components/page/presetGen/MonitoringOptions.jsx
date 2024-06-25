@@ -36,7 +36,7 @@ const CommandGenerator = () => {
   };
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Command Generator</h1>
+      <h1>Monitoring options Command</h1>
 
       <div style={{ marginBottom: '20px' }}>
         <label>
@@ -86,7 +86,7 @@ const CommandGenerator = () => {
           >
             Copy All
           </button>
-          <pre>{generatedCommand.join('\n')}</pre>
+          <pre className="generatecommand" >{generatedCommand.join('\n')}</pre>
         </div>
       )}
     </div>

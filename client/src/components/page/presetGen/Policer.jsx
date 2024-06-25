@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import "./preset.css";
 const Policer = () => {
   const [policerName, setPolicerName] = useState('');
@@ -6,7 +7,23 @@ const Policer = () => {
   const [burstSizeLimit, setBurstSizeLimit] = useState('');
   const [generatedCommands, setGeneratedCommands] = useState([]);
 
-  const handleGenerateCommands = () => {
+
+    const handleGenerateAndPost = async (e) =>{
+    e.preventDefault();
+
+    const data = {
+      policerName: policerName
+    };
+    try {
+      const response = await axios.post('http://localhost:3001/policerNameTable', data);
+      console.log('Response:', response.data);
+      alert('Policer name added successfully!');
+      setPolicerName(''); // Clear input field after successful submission
+    } catch (error) {
+      console.error('Error adding policer name:', error);
+      alert('Failed to add policer name. Please try again.');
+    }
+  
     const commands = [
       `set firewall policer ${policerName} if-exceeding bandwidth-limit ${bandwidthLimit}`,
       `set firewall policer ${policerName} if-exceeding burst-size-limit ${burstSizeLimit}`,
@@ -27,7 +44,7 @@ const Policer = () => {
   };
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Policer Command Generator</h1>
+      <h1> Policer Configuration Command </h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
           Policer Name:
@@ -68,7 +85,7 @@ const Policer = () => {
         </label>
       </div>
       <button
-        onClick={handleGenerateCommands}
+        onClick={handleGenerateAndPost}
         style={{ marginTop: '10px' }}
         disabled={!policerName || !bandwidthLimit || !burstSizeLimit}
       >
