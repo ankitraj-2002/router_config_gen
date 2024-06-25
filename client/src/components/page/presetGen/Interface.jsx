@@ -25,7 +25,7 @@ const Interface = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Interface Filter Command Generator</h1>
+      <h1> Interface Filter Command </h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
           Interface Name:

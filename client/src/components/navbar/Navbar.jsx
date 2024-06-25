@@ -9,6 +9,7 @@ export default function navbar() {
       <ul>
         <li><Link to="/presetGen" style={{textDecoration: "none", color:"inherit"}}>PresetGen</Link></li>
         <li><Link to= "/homepage"style={{textDecoration: "none", color:"inherit"}}>ConfigGen</Link></li>
+        <li><Link to= "/terminal"style={{textDecoration: "none", color:"inherit"}}>Terminal</Link></li>
       </ul>
     </div>
   );

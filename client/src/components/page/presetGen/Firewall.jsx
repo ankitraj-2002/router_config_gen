@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
-import "./preset.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 const CommandGenerator = () => {
   const [filterName, setFilterName] = useState('');
-  const [addressFamily,setaddressFamily] = useState('');
+  const [addressFamily, setaddressFamily] = useState('');
   const [termNumber, setTermNumber] = useState('');
   const [action, setAction] = useState('');
-  const [generatedCommand, setGeneratedCommand] = useState([]);
+  const [generatedCommand, setGeneratedCommand] = useState('');
+  const [policerNames, setPolicerNames] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/policerNameTable");
+        setPolicerNames(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleGenerateCommand = () => {
-	if(filterName && termNumber && action && addressFamily){
-		const command = `set firewall family ${addressFamily} filter ${filterName} term ${termNumber} then ${action}`;
-		setGeneratedCommand(previous => [...previous,command]);
-	}
+    if (filterName && termNumber && action && addressFamily) {
+      const command = `set firewall family ${addressFamily} filter ${filterName} term ${termNumber} then ${action}`;
+      setGeneratedCommand(command);
+    }
   };
 
   const handleCopyAll = () => {
-    const allCodes = generatedCommand.join('\n');
-    navigator.clipboard.writeText(allCodes)
+    navigator.clipboard.writeText(generatedCommand)
       .then(() => {
-        alert('All codes copied to clipboard!');
+        alert('Code copied to clipboard!');
       })
       .catch(err => {
         console.error('Failed to copy!', err);
@@ -27,7 +40,7 @@ const CommandGenerator = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Switch Command Generator</h1>
+      <h1>Firewall Filters Command</h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
           Filter Name:
@@ -79,9 +92,9 @@ const CommandGenerator = () => {
             required
           >
             <option value="">--Select Action--</option>
-            <option value="accept">accept</option>
-            <option value="policer BW-12">policer BW-12</option>
-            <option value="discard">discard</option>
+            {policerNames.map(item => (
+              <option key={item.id} value={item.policerName}>{item.policerName}</option>
+            ))}
           </select>
         </label>
       </div>
@@ -92,16 +105,16 @@ const CommandGenerator = () => {
       >
         Generate Code
       </button>
-      {generatedCommand.length > 0 && (
+      {generatedCommand && (
         <div style={{ marginTop: '20px' }}>
-          <h2 style ={{display: 'inline-block'}}>Generated Codes:</h2>
-		  <button 
-            onClick={handleCopyAll} 
-            style={{ float: 'right', marginTop: '35px' }}
+          <h2>Generated Code:</h2>
+          <button
+            onClick={handleCopyAll}
+            style={{ float: 'right', marginTop: '10px' }}
           >
-            Copy All
+            Copy Code
           </button>
-          <pre className="generatecommand" style = {{clear : 'both'}}>{generatedCommand.join('\n')}</pre>
+          <pre style={{ clear: 'both' }}>{generatedCommand}</pre>
         </div>
       )}
     </div>
