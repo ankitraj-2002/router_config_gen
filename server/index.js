@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
+const initializeSocketServer = require('./sshServer');
 
 app.use(express.json());
 app.use(cors());
@@ -45,6 +45,8 @@ app.use("/policerNameTable", policerName);
 
 ////*****////
 
+//Initialization of sshServer//
+const server = initializeSocketServer(app);
 
 
 db.sequelize.sync().then(() =>{

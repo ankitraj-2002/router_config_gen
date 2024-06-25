@@ -61,6 +61,6 @@
 
 /* Add hover effect for list items */
 .navbar li:hover {
-  color: rgb(58, 48, 241);
+  color: rgb(58,48,241);
   /* Slightly lighter color on hover */
 }
