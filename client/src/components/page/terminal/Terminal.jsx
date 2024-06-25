@@ -28,6 +28,7 @@ const TerminalComponent = () => {
 
   const handleConnect = () => {
     socket.emit('ssh-connect', { host, port, username, password });
+    console.log(host,port,username,password);
   };
 
   const handleInput = (e) => {
