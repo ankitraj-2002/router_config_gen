@@ -3,6 +3,7 @@ const socketIo = require('socket.io');
 const { Client } = require('ssh2');
 
 const initializeSocketServer = (app) => {
+	console.log("yes ssh-server is");
 	const server = http.createServer(app);
 	const io = socketIo(server);
 
@@ -20,7 +21,7 @@ const initializeSocketServer = (app) => {
 					if(err) throw err;
 
 					socket.on('ssh-command', (commmand)=> {
-						stream.write(command+'\n');
+						stream.write(commmand+'\n');
 					});
 
 					stream.on('data', (data)=> {
@@ -31,7 +32,7 @@ const initializeSocketServer = (app) => {
 				});
 			}).connect({
 				host,
-				port:port || 22,
+				port:22,
 				username,
 				password
 			});
