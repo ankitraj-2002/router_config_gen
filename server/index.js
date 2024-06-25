@@ -1,11 +1,10 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const initializeSocketServer = require('./sshServer');
+// const initializeSocketServer = require('./sshServer');
 
 app.use(express.json());
 app.use(cors());
-
 
 const db = require("./models");
 
@@ -44,7 +43,7 @@ app.use("/snmpTable",snmpCommands);
 ////*****////
 
 //Initialization of sshServer//
-const server = initializeSocketServer(app);
+// const server = initializeSocketServer(app);
 
 
 db.sequelize.sync().then(() =>{

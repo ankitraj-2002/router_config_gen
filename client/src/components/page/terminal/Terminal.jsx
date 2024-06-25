@@ -3,7 +3,10 @@ import io from 'socket.io-client';
 import { Terminal } from 'xterm';
 import 'xterm/css/xterm.css';
 
-const socket = io('http://localhost:3001');
+const socket = io('http://localhost:3002',{
+    reconnectionAttempts:3,
+    reconnectionDelays:1000,
+});
 
 const TerminalComponent = () => {
   const terminalRef = useRef(null);
@@ -19,6 +22,12 @@ const TerminalComponent = () => {
     terminal.open(terminalRef.current);
     setTerm(terminal);
 
+    socket.on('connect',()=> {
+      console.log("Connected to socket.io server");
+    })
+    socket.on('connect-error',(error)=> {
+      console.error('Connection error:', error);
+    })
     socket.on('ssh-output', (data) => {
       terminal.write(data);
     });
