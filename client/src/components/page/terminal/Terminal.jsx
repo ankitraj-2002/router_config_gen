@@ -24,11 +24,7 @@ const SSHTerminal = () => {
   }, []);
 
   const handleConnect = async () => {
-    try {
-      socket.emit('ssh-connect', { host, port, username, password });
-    } catch (error) {
-      setOutput('Error connecting to SSH server: ' + error.message);
-    }
+      await socket.emit('ssh-connect', { host, port, username, password });
   };
 
   const handleCommand = (event) => {
