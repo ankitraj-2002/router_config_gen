@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 import "./preset.css";
-const DeleteCommandGenerator = () => {
+const DeleteCommandGenerator = ({setAppendLine}) => {
   const [interfaceName, setInterfaceName] = useState('');
   const [addressFamily,setaddressFamily] = useState('');
   const [filterName, setFilterName] = useState('');
-  const [generatedCommands, setGeneratedCommands] = useState([]);
+  // const [generatedCommands, setGeneratedCommands] = useState([]);
 
   const handleGenerateCommands = () => {
     if(interfaceName && addressFamily && filterName){
       const commands = `delete interfaces ${interfaceName} unit 0 family ${addressFamily} filter input ${filterName}`;
-      setGeneratedCommands(previous => [...previous,commands]);
+      setAppendLine(previous => [...previous,commands]);
+      // setGeneratedCommands(previous => [...previous,commands]);
     }
   };
 
-  const handleCopyAll = () => {
-    const allCommands = generatedCommands.join('\n');
-    navigator.clipboard.writeText(allCommands)
-      .then(() => {
-        alert('All commands copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  // const handleCopyAll = () => {
+  //   const allCommands = generatedCommands.join('\n');
+  //   navigator.clipboard.writeText(allCommands)
+  //     .then(() => {
+  //       alert('All commands copied to clipboard!');
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
 
   return (
     <div style={{ padding: '20px' }}>
@@ -75,7 +76,7 @@ const DeleteCommandGenerator = () => {
       >
         Generate Commands
       </button>
-      {generatedCommands.length > 0 && (
+      {/* {generatedCommands.length > 0 && (
         <div style={{ marginTop: '20px' }}>
           <h2 style={{ display: 'inline-block' }}>Generated Commands:</h2>
           <button 
@@ -86,7 +87,7 @@ const DeleteCommandGenerator = () => {
           </button>
           <pre className="generatecommand" style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

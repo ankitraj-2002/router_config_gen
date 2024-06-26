@@ -2,32 +2,33 @@ import React, { useState } from 'react';
 import "./preset.css"; 
 
 
-const ClassOfServiceInterface = () => {
+const ClassOfServiceInterface = ({setAppendLine}) => {
   const [interfaceName, setInterfaceName] = useState('');
   const [shapingRate, setShapingRate] = useState('');
-  const [generatedCodes, setGeneratedCodes] = useState([]);
+  // const [generatedCodes, setGeneratedCodes] = useState([]);
 
   const handleGenerateCode = () => {
     if (interfaceName && shapingRate) {
       const code = `set class-of-service interfaces ${interfaceName} shaping-rate ${shapingRate}`;
-      setGeneratedCodes(prevCodes => [...prevCodes, code]);
+      setAppendLine((prevCodes => [...prevCodes, code]));
+      // setGeneratedCodes;
     }
   };
 
-  const handleCopyAll = () => {
-    const allCodes = generatedCodes.join('\n');
-    navigator.clipboard.writeText(allCodes)
-      .then(() => {
-        alert('All codes copied to clipboard!');
-      })
-      .catch(err => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  // const handleCopyAll = () => {
+  //   const allCodes = generatedCodes.join('\n');
+  //   navigator.clipboard.writeText(allCodes)
+  //     .then(() => {
+  //       alert('All codes copied to clipboard!');
+  //     })
+  //     .catch(err => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Juniper Config Generator</h1>
+      <h1>Juniper Config Generator abcdefgh</h1>
       <div style={{ marginBottom: '10px' }}>
         <label>
           Interface Name:
@@ -61,7 +62,7 @@ const ClassOfServiceInterface = () => {
       >
         Generate Code
       </button>
-      {generatedCodes.length > 0 && (
+      {/* {generatedCodes.length > 0 && (
         <div style={{ marginTop: '20px' }}>
           <h2 style={{ display: 'inline-block' }}>Generated Codes:</h2>
           <button 
@@ -72,7 +73,7 @@ const ClassOfServiceInterface = () => {
           </button>
           <pre style={{ clear: 'both' }}>{generatedCodes.join('\n')}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

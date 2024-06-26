@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./preset.css";
-const Policer = () => {
+const Policer = ({setAppendLine}) => {
   const [policerName, setPolicerName] = useState('');
   const [bandwidthLimit, setBandwidthLimit] = useState('');
   const [burstSizeLimit, setBurstSizeLimit] = useState('');
-  const [generatedCommands, setGeneratedCommands] = useState([]);
+  // const [generatedCommands, setGeneratedCommands] = useState([]);
 
 
     const handleGenerateAndPost = async (e) =>{
@@ -29,19 +29,20 @@ const Policer = () => {
       `set firewall policer ${policerName} if-exceeding burst-size-limit ${burstSizeLimit}`,
       `set firewall policer ${policerName} then discard`
     ];
-    setGeneratedCommands(previous=>[...previous, ...commands]);
+    setAppendLine(prev => [...prev,...commands]);
+    // setGeneratedCommands(previous=>[...previous, ...commands]);
   };
 
-  const handleCopyAll = () => {
-    const allCommands = generatedCommands.join('\n');
-    navigator.clipboard.writeText(allCommands)
-      .then(() => {
-        alert('All commands copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  // const handleCopyAll = () => {
+  //   const allCommands = generatedCommands.join('\n');
+  //   navigator.clipboard.writeText(allCommands)
+  //     .then(() => {
+  //       alert('All commands copied to clipboard!');
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
   return (
     <div style={{ padding: '20px' }}>
       <h1> Policer Configuration Command </h1>
@@ -91,7 +92,7 @@ const Policer = () => {
       >
         Generate Commands
       </button>
-      {generatedCommands.length > 0 && (
+      {/* {generatedCommands.length > 0 && (
         <div style={{ marginTop: '20px' }}>
           <h2 style={{ display: 'inline-block' }}>Generated Commands:</h2>
           <button 
@@ -102,7 +103,7 @@ const Policer = () => {
           </button>
           <pre className="generatecommand" style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

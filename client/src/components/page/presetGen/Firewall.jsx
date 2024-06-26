@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const CommandGenerator = () => {
+const CommandGenerator = ({setAppendLine}) => {
   const [filterName, setFilterName] = useState('');
   const [addressFamily, setaddressFamily] = useState('');
   const [termNumber, setTermNumber] = useState('');
   const [action, setAction] = useState('');
-  const [generatedCommand, setGeneratedCommand] = useState('');
+  // const [generatedCommand, setGeneratedCommand] = useState('');
   const [policerNames, setPolicerNames] = useState([]);
 
   useEffect(() => {
@@ -24,19 +24,20 @@ const CommandGenerator = () => {
   const handleGenerateCommand = () => {
     if (filterName && termNumber && action && addressFamily) {
       const command = `set firewall family ${addressFamily} filter ${filterName} term ${termNumber} then ${action}`;
-      setGeneratedCommand(command);
+      setAppendLine(prev => [...prev,command]);
+      // setGeneratedCommand(command);
     }
   };
 
-  const handleCopyAll = () => {
-    navigator.clipboard.writeText(generatedCommand)
-      .then(() => {
-        alert('Code copied to clipboard!');
-      })
-      .catch(err => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  // const handleCopyAll = () => {
+  //   navigator.clipboard.writeText(generatedCommand)
+  //     .then(() => {
+  //       alert('Code copied to clipboard!');
+  //     })
+  //     .catch(err => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
 
   return (
     <div style={{ padding: '20px' }}>
@@ -105,7 +106,7 @@ const CommandGenerator = () => {
       >
         Generate Code
       </button>
-      {generatedCommand && (
+      {/* {generatedCommand && (
         <div style={{ marginTop: '20px' }}>
           <h2>Generated Code:</h2>
           <button
@@ -116,7 +117,7 @@ const CommandGenerator = () => {
           </button>
           <pre style={{ clear: 'both' }}>{generatedCommand}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

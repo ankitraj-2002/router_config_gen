@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 
-const DeleteCommandGenerator = () => {
+const DeleteCommandGenerator = ({setAppendLine}) => {
   const [defaultroute,setDefaultRoute] = useState('');
   const [destinationroute,setDestinationRoute] = useState('');
-  const [generatedCommands, setGeneratedCommands] = useState([]);
+  // const [generatedCommands, setGeneratedCommands] = useState([]);
 
   const handleGenerateCommands = () => {
     if(defaultroute && destinationroute){
       const commands = `set routing-options static route ${defaultroute} next-hop ${destinationroute}`;
-      setGeneratedCommands(previous =>[...previous,commands]);
+      setAppendLine(prev => [...prev,commands])
+      // setGeneratedCommands(previous =>[...previous,commands]);
     }
   };
 
-  const handleCopyAll = () => {
-    const allCommands = generatedCommands.join('\n');
-    navigator.clipboard.writeText(allCommands)
-      .then(() => {
-        alert('All commands copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  // const handleCopyAll = () => {
+  //   const allCommands = generatedCommands.join('\n');
+  //   navigator.clipboard.writeText(allCommands)
+  //     .then(() => {
+  //       alert('All commands copied to clipboard!');
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
 
   return (
     <div style={{ padding: '20px' }}>
@@ -59,7 +60,7 @@ const DeleteCommandGenerator = () => {
       >
         Generate Commands
       </button>
-      {generatedCommands.length > 0 && (
+      {/* {generatedCommands.length > 0 && (
         <div style={{ marginTop: '20px' }}>
           <h2 style={{ display: 'inline-block' }}>Generated Commands:</h2>
           <button 
@@ -70,7 +71,7 @@ const DeleteCommandGenerator = () => {
           </button>
           <pre className="generatecommand" style={{ clear: 'both' }}>{generatedCommands.join('\n')}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

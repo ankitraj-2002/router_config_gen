@@ -1,6 +1,6 @@
 import React from 'react';
 import './navbar.css';
-import stpilogo from "./images/logo.png"
+import stpilogo from "../images/logo.png"
 import { Link } from 'react-router-dom';
 export default function navbar() {
   return (

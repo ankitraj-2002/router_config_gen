@@ -34,3 +34,15 @@
     max-height: 25vh;
     overflow: auto;
 }
+.displaybox {
+    max-height: 35vh;
+    flex: 1;
+    /* padding: 1.5vh; */
+    background-color: #b6b6b6;
+    /* border: 2px solid #000000; */
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(15, 15, 15, 0.2);
+    margin: 3.5vh;
+    padding: 20px;
+            box-shadow: 9px 9px 9px rgba(15, 15, 15, 0.2);
+}

@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import "./preset.css";
-const Interface = () => {
+const Interface = ({setAppendLine}) => {
   const [interfaceName, setInterfaceName] = useState('');
   const [addressFamily,setaddressFamily] = useState('');
   const [filterName, setFilterName] = useState('');
-  const [generatedCommand, setGeneratedCommand] = useState([]);
+  // const [generatedCommand, setGeneratedCommand] = useState([]);
 
   const handleGenerateCommand = () => {
     if(interfaceName && addressFamily && filterName){
       const command = `set interfaces ${interfaceName} unit 0 family ${addressFamily} filter input ${filterName}`;
-      setGeneratedCommand(previous => [...previous,command]);
+      setAppendLine(prev => [...prev, command]);
+      // setGeneratedCommand(previous => [...previous,command]);
     }
   };
 
-  const handleCopyAll= () => {
-    navigator.clipboard.writeText(generatedCommand)
-      .then(() => {
-        alert('Command copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  // const handleCopyAll= () => {
+  //   navigator.clipboard.writeText(generatedCommand)
+  //     .then(() => {
+  //       alert('Command copied to clipboard!');
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
 
   return (
     <div style={{ padding: '20px' }}>
@@ -74,7 +75,7 @@ const Interface = () => {
       >
         Generate Code
       </button>
-      {generatedCommand.length > 0 && (
+      {/* {generatedCommand.length > 0 && (
         <div style={{ marginTop: '20px' }}>
           <h2 style ={{display: 'inline-block'}}>Generated Code:</h2>
           <button 
@@ -85,7 +86,7 @@ const Interface = () => {
           </button>
           <pre className="generatecommand" style = {{clear :'both'}}>{generatedCommand.join('\n')}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

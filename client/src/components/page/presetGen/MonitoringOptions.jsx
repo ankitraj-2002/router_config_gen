@@ -1,39 +1,42 @@
 import React, { useState } from 'react';
 
-const CommandGenerator = () => {
+const CommandGenerator = ({setAppendLine}) => {
   const [interfaceName, setInterfaceName] = useState('');
   const [bgpSummary, setBgpSummary] = useState('');
-  const [generatedCommand, setGeneratedCommand] = useState([]);
+  // const [generatedCommand, setGeneratedCommand] = useState([]);
 
   const handleGenerateShowInt = () => {
     if (interfaceName) {
 		const code = `show int ${interfaceName}`;
-      setGeneratedCommand(previous => [...previous,code]);
+    setAppendLine(prev => [...prev,code]);
+      // setGeneratedCommand(previous => [...previous,code]);
     }
   };
 
   const handleGenerateMonitorInterface = () => {
     if (interfaceName) {
 		const code = `monitor interface ${interfaceName}`;
-      setGeneratedCommand(previous =>[...previous,code]);
+        setAppendLine(prev => [...prev,code]);
+      // setGeneratedCommand(previous =>[...previous,code]);
     }
   };
 
   const handleGenerateBgpSummary = () => {
     if(bgpSummary){
       const code = `show bgp ${bgpSummary}`;
-      setGeneratedCommand(previous =>[...previous,code]);
+      setAppendLine(prev => [...prev,code]);
+      // setGeneratedCommand(previous =>[...previous,code]);
     }
   };
-    const handleCopyAll= () => {
-    navigator.clipboard.writeText(generatedCommand.join('\n'))
-      .then(() => {
-        alert('Command copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Failed to copy!', err);
-      });
-  };
+  //   const handleCopyAll= () => {
+  //   navigator.clipboard.writeText(generatedCommand.join('\n'))
+  //     .then(() => {
+  //       alert('Command copied to clipboard!');
+  //     })
+  //     .catch((err) => {
+  //       console.error('Failed to copy!', err);
+  //     });
+  // };
   return (
     <div style={{ padding: '20px' }}>
       <h1>Monitoring options Command</h1>
@@ -77,7 +80,7 @@ const CommandGenerator = () => {
           For Bgp Monitoring
         </button>
       </div>
-      {generatedCommand.length>0 && (
+      {/* {generatedCommand.length>0 && (
         <div style={{ marginTop: '20px' }}>
           <h2 style ={{display: 'inline-block'}}>Generated Code:</h2>
           <button 
@@ -88,7 +91,7 @@ const CommandGenerator = () => {
           </button>
           <pre className="generatecommand" >{generatedCommand.join('\n')}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
