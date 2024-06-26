@@ -18,7 +18,7 @@ const initializeSocketServer = () => {
 
         socket.on('ssh-connect', ({ host, port, username, password }) => {
             let conn = new Client();
-
+            console.log("New Client Connected");
             conn.on('ready', () => {
                 console.log('Client :: ready');
                 socket.emit('ssh-status', 'Connected');

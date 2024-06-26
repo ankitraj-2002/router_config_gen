@@ -1,90 +1,94 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import { Terminal } from 'xterm';
-import 'xterm/css/xterm.css';
 
-const socket = io('http://localhost:3002',{
-    reconnectionAttempts:3,
-    reconnectionDelays:1000,
-});
+const socket = io('http://localhost:3002'); // Replace with your server URL
 
-const TerminalComponent = () => {
-  const terminalRef = useRef(null);
-  const [term, setTerm] = useState(null);
-
+const SSHTerminal = () => {
   const [host, setHost] = useState('');
+  const [port, setPort] = useState(22); // Default SSH port
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [port, setPort] = useState(22);
+  const [output, setOutput] = useState('');
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const terminal = new Terminal();
-    terminal.open(terminalRef.current);
-    setTerm(terminal);
-
-    socket.on('connect',()=> {
-      console.log("Connected to socket.io server");
-    })
-    socket.on('connect-error',(error)=> {
-      console.error('Connection error:', error);
-    })
     socket.on('ssh-output', (data) => {
-      terminal.write(data);
+      setOutput((prevOutput) => prevOutput + data + '\n');
+    });
+
+    socket.on('ssh-status', (status) => {
+      setIsConnected(status === 'Connected');
     });
 
     return () => socket.disconnect();
   }, []);
 
-  const handleConnect = () => {
-    socket.emit('ssh-connect', { host, port, username, password });
-    console.log(host,port,username,password);
-  };
-
-  const handleInput = (e) => {
-    if (e.key === 'Enter') {
-      socket.emit('ssh-command', term.buffer.active.getLine(term.buffer.active.cursorY).translateToString());
-      term.write('\r\n');
+  const handleConnect = async () => {
+    try {
+      socket.emit('ssh-connect', { host, port, username, password });
+    } catch (error) {
+      setOutput('Error connecting to SSH server: ' + error.message);
     }
   };
 
-  useEffect(() => {
-    if (term) {
-      term.onKey(handleInput);
+  const handleCommand = (event) => {
+    if (event.key === 'Enter' && isConnected) {
+      const command = event.target.value.trim();
+      socket.emit('ssh-command', command);
+      event.target.value = ''; // Clear input after sending command
     }
-  }, [term]);
+  };
 
   return (
-    <div>
-      <div>
+    <div className="ssh-terminal">
+      <div className="connection-info">
+        <label htmlFor="host">Host:</label>
         <input
           type="text"
-          placeholder="Host"
+          id="host"
           value={host}
           onChange={(e) => setHost(e.target.value)}
+          disabled={isConnected}
         />
+        <label htmlFor="port">Port:</label>
         <input
           type="number"
-          placeholder="Port"
+          id="port"
           value={port}
-          onChange={(e) => setPort(e.target.value)}
+          onChange={(e) => setPort(parseInt(e.target.value))}
+          disabled={isConnected}
         />
+        <label htmlFor="username">Username:</label>
         <input
           type="text"
-          placeholder="Username"
+          id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          disabled={isConnected}
         />
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
-          placeholder="Password"
+          id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isConnected}
         />
-        <button onClick={handleConnect}>Connect</button>
+        <button onClick={handleConnect} disabled={isConnected}>
+          {isConnected ? 'Disconnect' : 'Connect'}
+        </button>
       </div>
-      <div ref={terminalRef} style={{ width: '100%', height: '400px', marginTop: '20px', border: '1px solid black' }}></div>
+      <div className="terminal-output">
+        <pre>{output}</pre>
+      </div>
+      <input
+        type="text"
+        placeholder="Enter command"
+        onKeyDown={handleCommand}
+        disabled={!isConnected}
+      />
     </div>
   );
 };
 
-export default TerminalComponent;
+export default SSHTerminal;
