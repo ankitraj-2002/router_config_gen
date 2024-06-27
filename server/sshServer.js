@@ -62,12 +62,12 @@ const initializeSocketServer = () => {
         console.log('Client disconnected from SSH');
     });
 
-    socket.on('disconnect', () => {
-        if (conn) {
-            conn.end();
-        }
-        console.log('Client disconnected from Socket.IO');
-    });
+    // socket.on('disconnect', () => {
+    //     if (conn) {
+    //         conn.end();
+    //     }
+    //     console.log('Client disconnected from Socket.IO');
+    // });
 });
 
     server.listen(3002, () => {

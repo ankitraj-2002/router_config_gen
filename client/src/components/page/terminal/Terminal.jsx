@@ -42,6 +42,7 @@ const SSHTerminal = () => {
   const handleCommand = (event) => {
     if (event.key === 'Enter' && isConnected) {
       const command = event.target.value.trim();
+      console.log(command);
       socket.emit('ssh-command', command);
       event.target.value = ''; // Clear input after sending command
     }
