@@ -21,7 +21,7 @@ const Display = ({ CommandLine }) => {
     const link = document.createElement('a');
 
     link.href = URL.createObjectURL(blob);
-    link.download = 'commandline.txt';
+    link.download = 'Config_file.txt';
 
     document.body.appendChild(link);
     link.click();

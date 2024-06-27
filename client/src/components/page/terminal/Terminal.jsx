@@ -12,19 +12,33 @@ const SSHTerminal = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    socket.on('ssh-output', (data) => {
+    // Define the socket event listeners
+    const handleSshOutput = (data) => {
       setOutput((prevOutput) => prevOutput + data + '\n');
-    });
+    };
 
-    socket.on('ssh-status', (status) => {
+    const handleSshStatus = (status) => {
       setIsConnected(status === 'Connected');
-    });
+    };
 
-    return () => socket.disconnect();
+    // Add the socket event listeners
+    socket.on('ssh-output', handleSshOutput);
+    socket.on('ssh-status', handleSshStatus);
+
+    // Cleanup the listeners on component unmount or when dependencies change
+    return () => {
+      socket.off('ssh-output', handleSshOutput);
+      socket.off('ssh-status', handleSshStatus);
+    };
   }, []);
 
   const handleConnect = async () => {
+    if (!isConnected) {
       await socket.emit('ssh-connect', { host, port, username, password });
+    } else {
+      socket.emit('disconnect');
+      setIsConnected(false);
+    }
   };
 
   const handleCommand = (event) => {
@@ -70,7 +84,7 @@ const SSHTerminal = () => {
           onChange={(e) => setPassword(e.target.value)}
           disabled={isConnected}
         />
-        <button onClick={handleConnect} disabled={isConnected}>
+        <button onClick={handleConnect}>
           {isConnected ? 'Disconnect' : 'Connect'}
         </button>
       </div>
