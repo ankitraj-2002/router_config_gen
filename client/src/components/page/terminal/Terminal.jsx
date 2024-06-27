@@ -12,7 +12,6 @@ const SSHTerminal = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    // Define the socket event listeners
     const handleSshOutput = (data) => {
       setOutput((prevOutput) => prevOutput + data + '\n');
     };
@@ -20,12 +19,10 @@ const SSHTerminal = () => {
     const handleSshStatus = (status) => {
       setIsConnected(status === 'Connected');
     };
-
-    // Add the socket event listeners
     socket.on('ssh-output', handleSshOutput);
     socket.on('ssh-status', handleSshStatus);
 
-    // Cleanup the listeners on component unmount or when dependencies change
+
     return () => {
       socket.off('ssh-output', handleSshOutput);
       socket.off('ssh-status', handleSshStatus);
