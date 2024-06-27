@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import  './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
 

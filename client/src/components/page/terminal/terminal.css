@@ -1,0 +1,18 @@
+.ssh-terminal{
+    height: 60vh;
+    max-height: 70vh;
+}
+
+
+.terminal-output{
+    padding: 3.5vh;
+        background-color: #454545;
+        /* Dark mode background for the display */
+        color: #f1f1f1;
+        /* Light text color for contrast */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: auto;
+        height: 50vh;
+        max-height: 80vh;
+}
