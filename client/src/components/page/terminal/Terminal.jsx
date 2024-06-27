@@ -10,11 +10,13 @@ const SSHTerminal = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [output, setOutput] = useState('');
+  const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     const handleSshOutput = (data) => {
       setOutput((prevOutput) => prevOutput + data + '\n');
+      console.log(output);
     };
 
     const handleSshStatus = (status) => {
@@ -39,12 +41,15 @@ const SSHTerminal = () => {
     }
   };
 
-  const handleCommand = (event) => {
+  const handleCommandKeyDown = (event) => {
     if (event.key === 'Enter' && isConnected) {
-      const command = event.target.value.trim();
-      console.log(command);
-      socket.emit('ssh-command', command);
-      event.target.value = ''; // Clear input after sending command
+      event.preventDefault();
+      const commandToSend = command.trim();
+      if (commandToSend) {
+        socket.emit('ssh-command', commandToSend);
+        setCommand(''); // Clear input after sending command
+        setOutput((prevOutput) => prevOutput + `\n${commandToSend}\n`); // Add the command to the output
+      }
     }
   };
 
@@ -93,7 +98,9 @@ const SSHTerminal = () => {
       <input
         type="text"
         placeholder="Enter command"
-        onKeyDown={handleCommand}
+        value={command}
+        onChange={(e) => setCommand(e.target.value)}
+        onKeyDown={handleCommandKeyDown}
         disabled={!isConnected}
       />
     </div>
