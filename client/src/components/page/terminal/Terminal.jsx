@@ -33,7 +33,7 @@ const SSHTerminal = () => {
     if (!isConnected) {
       await socket.emit('ssh-connect', { host, port, username, password });
     } else {
-      socket.emit('disconnect');
+      socket.emit('ssh-disconnect');
       setIsConnected(false);
     }
   };

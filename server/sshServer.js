@@ -13,49 +13,62 @@ const initializeSocketServer = () => {
         }
     });
 
-    io.on('connection', (socket) => {
-        
-        socket.on('ssh-connect', ({ host, port, username, password }) => {
-            let conn = new Client();
-            console.log("New Client Connected");
-            conn.on('ready', () => {
-                console.log('Client :: ready');
-                socket.emit('ssh-status', 'Connected');
+   io.on('connection', (socket) => {
+    console.log('New client connected');
+    let conn = null;
 
-                conn.shell((err, stream) => {
-                    if (err) {
-                        socket.emit('ssh-output', 'Error connecting to SSH server');
-                        throw err;
-                    }
+    socket.on('ssh-connect', ({ host, port, username, password }) => {
+        conn = new Client();
+        console.log("New SSH connection request");
 
-                    socket.on('ssh-command', (command) => {
-                        stream.write(command + '\n');
-                    });
+        conn.on('ready', () => {
+            console.log('Client :: ready');
+            socket.emit('ssh-status', 'Connected');
 
-                    stream.on('data', (data) => {
-                        socket.emit('ssh-output', data.toString());
-                    }).on('close', () => {
-                        console.log('Stream :: close');
-                        conn.end();
-                    }).stderr.on('data', (data) => {
-                        socket.emit('ssh-output', 'STDERR: ' + data.toString());
-                    });
+            conn.shell((err, stream) => {
+                if (err) {
+                    socket.emit('ssh-error', 'Error connecting to SSH server');
+                    return;
+                }
+
+                socket.on('ssh-command', (command) => {
+                    stream.write(command + '\n');
                 });
-            }).on('error', (err) => {
-                socket.emit('ssh-output', 'SSH connection error: ' + err.message);
-                throw err;
-            }).connect({
-                host,
-                port: port || 22,
-                username,
-                password
-            });
-        });
 
-        socket.on('disconnect', () => {
-            console.log('Client disconnected');
+                stream.on('data', (data) => {
+                    socket.emit('ssh-output', data.toString());
+                }).on('close', () => {
+                    console.log('Stream :: close');
+                    conn.end();
+                }).stderr.on('data', (data) => {
+                    socket.emit('ssh-output', 'STDERR: ' + data.toString());
+                });
+            });
+        }).on('error', (err) => {
+            socket.emit('ssh-error', 'SSH connection error: ' + err.message);
+        }).connect({
+            host,
+            port: port || 22,
+            username,
+            password
         });
     });
+
+    socket.on('ssh-disconnect', () => {
+        if (conn) {
+            conn.end();
+            socket.emit('ssh-status', 'Disconnected');
+        }
+        console.log('Client disconnected from SSH');
+    });
+
+    socket.on('disconnect', () => {
+        if (conn) {
+            conn.end();
+        }
+        console.log('Client disconnected from Socket.IO');
+    });
+});
 
     server.listen(3002, () => {
         console.log('Socket.io server running on port 3002');
@@ -69,4 +82,5 @@ if (require.main === module) {
     initializeSocketServer();
 }
 
-module.exports = initializeSocketServer;
+module.exports = initializeSocketServer;   
+
