@@ -1,5 +1,5 @@
-const express = require('express'); // Import express if not already done
-const app = express(); // Initialize express app
+const express = require('express');
+const app = express();
 const http = require('http');
 const socketIo = require('socket.io');
 const { Client } = require('ssh2');
@@ -7,8 +7,8 @@ const { Client } = require('ssh2');
 // Function to remove ANSI escape sequences
 function removeEscapeSequences(data) {
   // Regular expression to match ANSI escape sequences
-  const ansiRegex = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
-  return data.replace(ansiRegex, '');
+  const ansiRegex = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]|[\b\r]|[%]/g;
+    return data.replace(ansiRegex, '');
 }
 
 // Function to clean and format data
