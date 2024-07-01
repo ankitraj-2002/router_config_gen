@@ -13,6 +13,7 @@ const SSHTerminal = () => {
   const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
 
+
   useEffect(() => {
     const handleSshOutput = (data) => {
       setOutput((prevOutput) => prevOutput + data + '\n');
@@ -51,7 +52,35 @@ const SSHTerminal = () => {
       }
     }
   };
-
+  const handleBackup = async () => {
+    if (!isConnected) {
+      return; // Don't proceed if not connected
+    }
+  
+    const commandToSend = 'ifconfig';
+    await socket.emit('ssh-command', commandToSend);
+  
+    let backupOutput = '';
+    const handleSshOutputForBackup = (data) => {
+      backupOutput += data + '\n';
+    };
+  
+    socket.on('ssh-output', handleSshOutputForBackup);
+  
+    // Wait for the command to finish executing before creating download link
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust timeout as needed
+    socket.off('ssh-output', handleSshOutputForBackup);
+  
+    const blob = new Blob([backupOutput], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+  
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Router_config.txt'; // Set desired filename
+    link.click();
+  
+    window.URL.revokeObjectURL(url); // Clean up the temporary URL
+  };
   return (
     <div className="ssh-terminal">
       <div className="connection-info">
@@ -102,6 +131,7 @@ const SSHTerminal = () => {
         onKeyDown={handleCommandKeyDown}
         disabled={!isConnected}
       />
+      <button onClick={handleBackup}>Download Backup</button>
     </div>
   );
 };

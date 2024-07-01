@@ -4,11 +4,11 @@ const http = require('http');
 const socketIo = require('socket.io');
 const { Client } = require('ssh2');
 
-// Function to remove ANSI escape sequences and control characters
-function cleanAndFormatData(data) {
+// Function to remove ANSI escape sequences
+function removeEscapeSequences(data) {
+  // Regular expression to match ANSI escape sequences
   const ansiRegex = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]|[\b\r]|[%]/g;
-  // const controlChars = /[]/g;
-  return data.replace(ansiRegex, '');
+    return data.replace(ansiRegex, '');
 }
 
 const initializeSocketServer = () => {
@@ -40,6 +40,7 @@ const initializeSocketServer = () => {
 
           socket.on('ssh-command', (command) => {
             stream.write(command + '\n');
+            
           });
 
           stream.on('data', (data) => {
