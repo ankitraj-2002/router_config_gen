@@ -1,15 +1,16 @@
 import React from 'react';
 import './navbar.css';
-import stpilogo from "../images/logo.png"
-import { Link } from 'react-router-dom';
-export default function navbar() {
+import stpilogo from "../images/logo.png";
+import { NavLink } from 'react-router-dom';
+
+export default function Navbar() {
   return (
     <div className='navbar'>
-       <img src={stpilogo} alt='' className='logo' />     
+      <img src={stpilogo} alt='logo' className='logo' />
       <ul>
-        <li><Link to="/presetGen" style={{textDecoration: "none", color:"inherit"}}>PresetGen</Link></li>
-        <li><Link to= "/homepage"style={{textDecoration: "none", color:"inherit"}}>ConfigGen</Link></li>
-        <li><Link to= "/terminal"style={{textDecoration: "none", color:"inherit"}}>Terminal</Link></li>
+        <li><NavLink to="/presetGen" >PresetGen</NavLink></li>
+        <li><NavLink to="/homepage" >ConfigGen</NavLink></li>
+        <li><NavLink to="/terminal" >Terminal</NavLink></li>
       </ul>
     </div>
   );

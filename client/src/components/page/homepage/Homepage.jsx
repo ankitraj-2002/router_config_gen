@@ -5,7 +5,7 @@ import './editor/editor.css';
 export default function Homepage() {
   return (
     <div className='homepage'>
-         <Editor />
+    <Editor />
     </div>
   )
 }

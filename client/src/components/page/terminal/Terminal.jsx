@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import  './terminal.css';
+import './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
 
 const SSHTerminal = () => {
   const [host, setHost] = useState('');
-  const [port, setPort] = useState(22); // Default SSH port
+  const [port, setPort] = useState(22);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [output, setOutput] = useState('');
@@ -16,15 +16,14 @@ const SSHTerminal = () => {
   useEffect(() => {
     const handleSshOutput = (data) => {
       setOutput((prevOutput) => prevOutput + data + '\n');
-      console.log(output);
     };
 
     const handleSshStatus = (status) => {
       setIsConnected(status === 'Connected');
     };
+
     socket.on('ssh-output', handleSshOutput);
     socket.on('ssh-status', handleSshStatus);
-
 
     return () => {
       socket.off('ssh-output', handleSshOutput);
@@ -48,7 +47,7 @@ const SSHTerminal = () => {
       if (commandToSend) {
         socket.emit('ssh-command', commandToSend);
         setCommand(''); // Clear input after sending command
-        setOutput((prevOutput) => prevOutput + `\n${commandToSend}\n`); // Add the command to the output
+        // setOutput((prevOutput) => prevOutput + `\n${commandToSend}\n`); // Add the command to the output
       }
     }
   };

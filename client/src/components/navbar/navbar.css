@@ -1,9 +1,6 @@
-/* navbar.css */
-
 /* General styling for the navbar */
 .navbar {
   display: flex;
-  /* margin: 20px auto; */
   align-items: center;
   margin-top: 0px;
   justify-content: space-between;
@@ -13,54 +10,49 @@
   z-index: 1000;
   top: 0;
   height: 7.5vh;
-
 }
-
 
 .logo {
   margin-left: 5%;
   height: 7.5vh;
-  /* Adjust the height as needed */
   width: 80px;
-  /* Same as height to make it a circle */
-  /* border-radius: 50%; */
   justify-content: center;
   align-items: center;
-  /* Makes the logo appear in a circle */
 }
 
 /* Styling for the unordered list */
 .navbar ul {
   flex: 1;
-    text-align: center;
+  text-align: center;
   display: flex;
   list-style-type: none;
-  /* Removes default list styling */
-  /* margin: 0; */
-  /* Removes default margin */
-  /* padding: 0; */
-  /* Removes default padding */
   align-items: center;
-  /* Center-align list items vertically */
 }
 
 /* Styling for list items */
-.navbar li {
+.navbar li a:not(.active){
   margin: 10px;
-  font-size: 500px;
-  /* margin-left: 20%; */
-  /* margin-right: 10%; */
-  /* Spacing between list items */
   color: black;
-  /* Text color */
   font-size: 16px;
-  /* Font size */
   cursor: pointer;
-  /* Cursor changes to pointer on hover */
+  text-decoration: none;
 }
 
 /* Add hover effect for list items */
-.navbar li:hover {
-  color: rgb(58,48,241);
-  /* Slightly lighter color on hover */
+.navbar li a:not(.active):hover {
+  color: rgb(58, 48, 241);
+}
+
+/* Add active link styling */
+
+.active {
+  color: white;
+  padding: 24px;
+  padding-top: 10px;
+  border-top: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  /* border: 2px solid #ffffff; */
+    background-color: #606060;
+      /* Light grey background */
 }

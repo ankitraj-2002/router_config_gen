@@ -1,12 +1,15 @@
 .ssh-terminal{
-    height: 60vh;
-    max-height: 70vh;
+    padding: 10px;
 }
 
+.connection-info{
+    padding: 2px;
+    position: sticky;
+}
 
 .terminal-output{
-    padding: 3.5vh;
-        background-color: #454545;
+        margin-top: 5px;
+        background-color: #000000;
         /* Dark mode background for the display */
         color: #f1f1f1;
         /* Light text color for contrast */
