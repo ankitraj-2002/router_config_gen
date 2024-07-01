@@ -57,7 +57,7 @@ const SSHTerminal = () => {
       return; // Don't proceed if not connected
     }
   
-    const commandToSend = 'ifconfig';
+    const commandToSend = 'show configuration | display set | no-more';
     await socket.emit('ssh-command', commandToSend);
   
     let backupOutput = '';
