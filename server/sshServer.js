@@ -11,8 +11,20 @@ function removeEscapeSequences(data) {
     return data.replace(ansiRegex, '');
 }
 
+// Function to clean and format data
+function cleanAndFormatData(data) {
+  // Remove ANSI escape sequences
+  const cleanedData = removeEscapeSequences(data);
+  
+  // Additional formatting if needed
+  // For example, split lines, trim spaces, etc.
+  const formattedData = cleanedData.split('\n').map(line => line.trim()).filter(line => line);
+
+  return formattedData;
+}
+
 const initializeSocketServer = () => {
-  const server = http.createServer(app);
+  const server = http.createServer(app); // Create an HTTP server
   const io = socketIo(server, {
     cors: {
       origin: "http://localhost:3000",
@@ -44,13 +56,13 @@ const initializeSocketServer = () => {
           });
 
           stream.on('data', (data) => {
-            const cleanedData = cleanAndFormatData(data.toString());
+            const cleanedData = cleanAndFormatData(data.toString()).join('\n');
             socket.emit('ssh-output', cleanedData);
           }).on('close', () => {
             console.log('Stream :: close');
             conn.end();
           }).stderr.on('data', (data) => {
-            const cleanedData = cleanAndFormatData(data.toString());
+            const cleanedData = cleanAndFormatData(data.toString()).join('\n');
             socket.emit('ssh-output', 'STDERR: ' + cleanedData);
           });
         });
@@ -80,6 +92,7 @@ const initializeSocketServer = () => {
   return server;
 };
 
+// Start the server if this is the main module
 if (require.main === module) {
   initializeSocketServer();
 }
