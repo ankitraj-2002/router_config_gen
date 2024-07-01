@@ -52,6 +52,7 @@ const initializeSocketServer = () => {
 
           socket.on('ssh-command', (command) => {
             stream.write(command + '\n');
+            
           });
 
           stream.on('data', (data) => {
