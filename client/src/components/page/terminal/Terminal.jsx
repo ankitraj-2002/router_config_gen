@@ -3,17 +3,11 @@ import io from 'socket.io-client';
 import './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
+
 function countWords(line) {
-  // Splits the line into an array of words using spaces as the separator
-  // Filter out any empty strings from the array (in case there are multiple spaces)
   const words = line.split(' ').filter(word => word.trim() !== '');
   return words.length;
 }
-
-// Example usage:
-const line = "This is an example line with some words.";
-const wordCount = countWords(line);
-console.log(`Number of words: ${wordCount}`); // Output: Number of words: 7
 
 const SSHTerminal = () => {
   const [host, setHost] = useState('');
@@ -23,13 +17,12 @@ const SSHTerminal = () => {
   const [output, setOutput] = useState('');
   const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
-  const [linesToRemove,setLinesToRemove] = useState('');
+  const [linesToRemove, setLinesToRemove] = useState('');
 
   useEffect(() => {
     const handleSshOutput = (data) => {
       const filteredOutput = data.split('\n').slice(linesToRemove).join('\n').trim();
-      setOutput((prevOutput) => prevOutput + filteredOutput + '\n');
-
+      setOutput((prevOutput) => prevOutput.trim() + '\n' + filteredOutput + '\n');
     };
 
     const handleSshStatus = (status) => {
@@ -43,7 +36,7 @@ const SSHTerminal = () => {
       socket.off('ssh-output', handleSshOutput);
       socket.off('ssh-status', handleSshStatus);
     };
-  }, []);
+  }, [setOutput, linesToRemove]);
 
   const handleConnect = async () => {
     if (!isConnected) {
@@ -59,42 +52,46 @@ const SSHTerminal = () => {
       event.preventDefault();
       const commandToSend = command.trim();
       if (commandToSend) {
-        const linesToremove = countWords(command);
-        console.log(linesToremove);
-        setLinesToRemove(linesToremove);
+        const linesToremove = countWords(commandToSend);
+        if(!(linesToRemove-1)){
+          setLinesToRemove(linesToRemove);
+        }else{
+          setLinesToRemove(linesToremove-1);
+        }
         socket.emit('ssh-command', commandToSend);
         setCommand(''); // Clear input after sending command
-        setOutput((prevOutput) => prevOutput + `\n${commandToSend}\n`); // Add the command to the output
+        setOutput((prevOutput) => prevOutput.trim() + `\n${commandToSend}`);
       }
     }
   };
+
   const handleBackup = async () => {
     if (!isConnected) {
       return; // Don't proceed if not connected
     }
-  
+
     const commandToSend = 'show configuration | display set | no-more';
     await socket.emit('ssh-command', commandToSend);
-  
+
     let backupOutput = '';
     const handleSshOutputForBackup = (data) => {
       backupOutput += data + '\n';
     };
-  
+
     socket.on('ssh-output', handleSshOutputForBackup);
-  
+
     // Wait for the command to finish executing before creating download link
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust timeout as needed
     socket.off('ssh-output', handleSshOutputForBackup);
-  
+
     const blob = new Blob([backupOutput], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
-  
+
     const link = document.createElement('a');
     link.href = url;
     link.download = 'Router_config.txt'; // Set desired filename
     link.click();
-  
+
     window.URL.revokeObjectURL(url); // Clean up the temporary URL
   };
   return (
