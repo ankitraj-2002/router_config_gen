@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import backupicon from '../../images/backup.png'
 import './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
@@ -123,6 +124,7 @@ const SSHTerminal = () => {
       <div className="terminal-output">
         <pre>{output}</pre>
       </div>
+      <div className="ipCommand">
       <input
         type="text"
         placeholder="Enter command"
@@ -131,7 +133,8 @@ const SSHTerminal = () => {
         onKeyDown={handleCommandKeyDown}
         disabled={!isConnected}
       />
-      <button onClick={handleBackup}>Download Backup</button>
+      {<button className="backupIconButton" onClick={handleBackup}><img className='icon' src = {backupicon} alt=''></img></button>}
+    </div>
     </div>
   );
 };

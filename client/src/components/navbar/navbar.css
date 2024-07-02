@@ -15,7 +15,7 @@
 .logo {
   margin-left: 5%;
   height: 7.5vh;
-  width: 80px;
+  width: 7.5vw;
   justify-content: center;
   align-items: center;
 }
@@ -47,7 +47,8 @@
 
 .active {
   color: white;
-  padding: 24px;
+  padding: 2vh;
+  padding-bottom: 4.5vh;
   padding-top: 10px;
   border-top: 10px;
   border-radius: 4px;
