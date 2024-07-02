@@ -47,17 +47,17 @@ const SSHTerminal = () => {
       setIsConnected(false);
     }
   };
-
+  
   const handleCommandKeyDown = (event) => {
     if (event.key === 'Enter' && isConnected) {
       event.preventDefault();
       const commandToSend = command.trim();
       if (commandToSend) {
         const linesToremove = countWords(commandToSend);
-        if(!(linesToRemove-1)){
+        if(!(linesToRemove-1) === 0){
           setLinesToRemove(linesToRemove);
         }else{
-          setLinesToRemove(linesToremove-1);
+          setLinesToRemove(linesToremove);
         }
         socket.emit('ssh-command', commandToSend);
         setCommand(''); // Clear input after sending command
