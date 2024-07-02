@@ -15,7 +15,7 @@ const SSHTerminal = () => {
   const [port, setPort] = useState(22);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [output, setOutput] = useState('');
+  const [output, setOutput] = useState(' Provide Credentials to Connect');
   const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
   const [linesToRemove, setLinesToRemove] = useState('');
@@ -30,8 +30,9 @@ const SSHTerminal = () => {
       setIsConnected(status === 'Connected');
     };
 
-    socket.on('ssh-output', handleSshOutput);
+     socket.on('ssh-output', handleSshOutput);
     socket.on('ssh-status', handleSshStatus);
+    socket.on('ssh-error', handleError);
 
     return () => {
       socket.off('ssh-output', handleSshOutput);
@@ -39,11 +40,19 @@ const SSHTerminal = () => {
     };
   }, [setOutput, linesToRemove]);
 
+     const handleError = () =>{
+      alert("Unable to Connect, Please Recheck your Credentials");
+      setOutput("Unable to Connect");
+    }
+
   const handleConnect = async () => {
     if (!isConnected) {
+      setOutput("");
       await socket.emit('ssh-connect', { host, port, username, password });
     } else {
       socket.emit('ssh-disconnect');
+      setOutput("  Disconnected ");
+      alert("Shell Session Disconnected");      
       setIsConnected(false);
     }
   };
@@ -146,7 +155,7 @@ const SSHTerminal = () => {
         onKeyDown={handleCommandKeyDown}
         disabled={!isConnected}
       />
-      {isConnected && <button className="backupIconButton" onClick={handleBackup}><img className='icon' src = {backupicon} alt=''></img></button>}
+      {isConnected && <button className="backupIconButton" onClick={handleBackup}>Backup<img className='icon' src = {backupicon} alt=''></img></button>}
     </div>
     </div>
   );
