@@ -1,50 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import backupicon from '../../images/backup.png'
 import './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
 
-function countWords(line) {
-  const words = line.split(' ').filter(word => word.trim() !== '');
-  return words.length;
-}
+// function countWords(line) {
+//   const words = line.split(' ').filter(word => word.trim() !== '');
+//   return words.length;
+// }
+// function removeCharactersInRange(str, start, end) {
+//   if (start < 0 || end >= str.length || start > end) {
+//     throw new Error('Invalid range');
+//   }
+//   return str.slice(0, start) + str.slice(end + 1);
+// }
 
 const SSHTerminal = () => {
   const [host, setHost] = useState('');
   const [port, setPort] = useState(22);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [output, setOutput] = useState(' Provide Credentials to Connect');
+  const [output, setOutput] = useState('Provide Credentials to Connect');
   const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
-  const [linesToRemove, setLinesToRemove] = useState('');
-
+  // const [linesToRemove, setLinesToRemove] = useState('');
+const outputRef = useRef(null);
   useEffect(() => {
+    // console.log("Mounted");
     const handleSshOutput = (data) => {
-      const filteredOutput = data.split('\n').slice(linesToRemove).join('\n').trim();
-      setOutput((prevOutput) => prevOutput.trim() + '\n' + filteredOutput + '\n');
+      // const filteredOutput = data.split('\n').slice(linesToRemove).join('\n').trim();
+      const filteredOutput = data;
+      setOutput((prevOutput) => prevOutput.trim() + '\n'+filteredOutput+'\n');
     };
 
     const handleSshStatus = (status) => {
       setIsConnected(status === 'Connected');
     };
 
-     socket.on('ssh-output', handleSshOutput);
-    socket.on('ssh-status', handleSshStatus);
-    socket.on('ssh-error', handleError);
-
-    return () => {
-      socket.off('ssh-output', handleSshOutput);
-      socket.off('ssh-status', handleSshStatus);
-    };
-  }, [setOutput, linesToRemove]);
-
-     const handleError = () =>{
+    const handleError =() =>{
       alert("Unable to Connect, Please Recheck your Credentials");
       setOutput("Unable to Connect");
     }
 
+    socket.on('ssh-output', handleSshOutput);
+    socket.on('ssh-status', handleSshStatus);
+    socket.on('ssh-error', handleError);
+    // console.log("UnMounted");
+    return () => {
+      socket.off('ssh-output', handleSshOutput);
+      socket.off('ssh-status', handleSshStatus);
+      socket.off('ssh-error',handleError);
+    };
+  }, [setOutput]);
+  
+  // console.log(output);
+  // console.log(command);
+  useEffect(() => {
+    if(outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  },[output]);
   const handleConnect = async () => {
     if (!isConnected) {
       setOutput("");
@@ -62,15 +78,16 @@ const SSHTerminal = () => {
       event.preventDefault();
       const commandToSend = command.trim();
       if (commandToSend) {
-        const linesToremove = countWords(commandToSend);
-        if(!(linesToRemove-1) === 0){
-          setLinesToRemove(linesToRemove);
-        }else{
-          setLinesToRemove(linesToremove);
-        }
+        // const linesToremove = countWords(commandToSend);
+        // if(!(linesToRemove-1) === 0){
+        //   setLinesToRemove(linesToRemove+100);
+        // }else{
+        //   setLinesToRemove(linesToremove);
+        // }
         socket.emit('ssh-command', commandToSend);
-        setCommand(''); // Clear input after sending command
-        setOutput((prevOutput) => prevOutput.trim() + `\n${commandToSend}`);
+        setCommand('');
+        // // Clear input after sending command
+        // setOutput((prevOutput) => prevOutput.trim() + `\n${commandToSend}`);
       }
     }
   };
@@ -80,7 +97,7 @@ const SSHTerminal = () => {
       return; // Don't proceed if not connected
     }
 
-    const commandToSend = 'show configuration | display set | no-more';
+    const commandToSend = 'ifconfig';
     await socket.emit('ssh-command', commandToSend);
 
     let backupOutput = '';
@@ -99,11 +116,16 @@ const SSHTerminal = () => {
 
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'Router_config.txt'; // Set desired filename
+    link.download = 'Backup_config.txt'; // Set desired filename
     link.click();
 
     window.URL.revokeObjectURL(url); // Clean up the temporary URL
   };
+  // console.log(command.length);
+  // console.log(output.length);
+  // for(let i = 0;i<output.length;i+=1){
+  //   console.log(output[i]);
+  // }
   return (
     <div className="ssh-terminal">
       <div className="connection-info">
@@ -143,7 +165,7 @@ const SSHTerminal = () => {
           {isConnected ? 'Disconnect' : 'Connect'}
         </button>
       </div>
-      <div className="terminal-output">
+      <div className="terminal-output" ref={outputRef}>
         <pre>{output}</pre>
       </div>
       <div className="ipCommand">

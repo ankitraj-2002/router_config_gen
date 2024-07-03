@@ -1,10 +1,18 @@
-import React from 'react';
+
+import React, { useEffect, useRef }from 'react';
 import './presetDisp.css';
 import copyimg from "../../images/copy.png"
 import downloadimg from "../../images/download.png"
 
 
 const Display = ({ CommandLine }) => {
+  const outputRef = useRef(null);
+  
+  useEffect(() => {
+    if(outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  },[CommandLine]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(CommandLine)
@@ -34,7 +42,7 @@ const Display = ({ CommandLine }) => {
           <button onClick={downloadText} className='dispButtons' ><img className = "disp-icon" src= {downloadimg} alt=''></img></button>
           <button onClick={copyToClipboard} className='dispButtons' ><img className = "disp-icon" src= {copyimg} alt=''></img></button>
         </div>
-      <div className="display"> 
+      <div className="display" ref={outputRef}> 
         <pre>{CommandLine.join("\n")}</pre>
       </div>
     </div>

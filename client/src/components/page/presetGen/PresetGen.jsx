@@ -9,6 +9,8 @@ import Interface_description from './Interface_description';
 import RoutingOption from './RoutingOption';
 import MonitoringOptions from './MonitoringOptions';
 import Display from './Display';
+
+
 const components = {
   ClassOfServiceInterface: ClassOfServiceInterface,
   Firewall: Firewall,
@@ -34,7 +36,9 @@ const DropdownRenderer = () => {
 
   return (
     <div className = "preSetMain">
-      <div className='displaybox'> <Display CommandLine={appendLine} /></div>
+        <div className='displaybox'> 
+          <Display CommandLine={appendLine} />
+          </div>
       <div className="componentListHeader">
       <h3 className="componentListItem">Select a Component</h3>
       <select className="componentListItem" value={selectedComponent} onChange={handleChange}>
