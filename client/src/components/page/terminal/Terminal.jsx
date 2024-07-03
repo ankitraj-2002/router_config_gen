@@ -5,10 +5,10 @@ import './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
 
-function countWords(line) {
-  const words = line.split(' ').filter(word => word.trim() !== '');
-  return words.length;
-}
+// function countWords(line) {
+//   const words = line.split(' ').filter(word => word.trim() !== '');
+//   return words.length;
+// }
 
 const SSHTerminal = () => {
   const [host, setHost] = useState('');
@@ -18,12 +18,22 @@ const SSHTerminal = () => {
   const [output, setOutput] = useState(' Provide Credentials to Connect');
   const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
-  const [linesToRemove, setLinesToRemove] = useState('');
+  // const [linesToRemove, setLinesToRemove] = useState('');  
+  const [wordCount, setWordCount] = useState(0);
+
 
   useEffect(() => {
-    const handleSshOutput = (data) => {
-      const filteredOutput = data.split('\n').slice(linesToRemove).join('\n').trim();
-      setOutput((prevOutput) => prevOutput.trim() + '\n' + filteredOutput + '\n');
+
+     const handleSshOutput = (data) => {
+      setWordCount(wordCount-1);
+      if (wordCount>=0){
+      setOutput((prevOutput) => prevOutput.trim() + " " +data );  
+      }
+      else {
+      // const filteredOutput = data.split('\n').slice(linesToRemove).join('\n').trim();
+      setOutput((prevOutput) => prevOutput.trim() + '\n' + data );
+// 
+      }
     };
 
     const handleSshStatus = (status) => {
@@ -37,8 +47,10 @@ const SSHTerminal = () => {
     return () => {
       socket.off('ssh-output', handleSshOutput);
       socket.off('ssh-status', handleSshStatus);
+       socket.on('ssh-error', handleError);
     };
-  }, [setOutput, linesToRemove]);
+  }, [setOutput,wordCount]);
+
 
      const handleError = () =>{
       alert("Unable to Connect, Please Recheck your Credentials");
@@ -62,15 +74,13 @@ const SSHTerminal = () => {
       event.preventDefault();
       const commandToSend = command.trim();
       if (commandToSend) {
-        const linesToremove = countWords(commandToSend);
-        if(!(linesToRemove-1) === 0){
-          setLinesToRemove(linesToRemove);
-        }else{
-          setLinesToRemove(linesToremove);
-        }
+        // const Toremove = countWords(commandToSend);
+
         socket.emit('ssh-command', commandToSend);
         setCommand(''); // Clear input after sending command
         setOutput((prevOutput) => prevOutput.trim() + `\n${commandToSend}`);
+        let commandWithoutSpace = commandToSend.replace(/\s/g, '');
+        setWordCount(commandWithoutSpace.length);
       }
     }
   };
@@ -155,6 +165,7 @@ const SSHTerminal = () => {
         onKeyDown={handleCommandKeyDown}
         disabled={!isConnected}
       />
+      
       {isConnected && <button className="backupIconButton" onClick={handleBackup}>Backup<img className='icon' src = {backupicon} alt=''></img></button>}
     </div>
     </div>

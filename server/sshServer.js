@@ -57,7 +57,9 @@ const initializeSocketServer = () => {
 
           stream.on('data', (data) => {
             const cleanedData = cleanAndFormatData(data.toString()).join('\n');
+            if(cleanedData.length > 0){
             socket.emit('ssh-output', cleanedData);
+            }
           }).on('close', () => {
             console.log('Stream :: close');
             conn.end();
