@@ -1,11 +1,13 @@
 import React from 'react';
 import './navbar.css';
 import stpilogo from "../images/logo.png";
+import logo from "../images/trial2.png";
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   return (
     <div className='navbar'>
+    <div className='nav'>
       <img src={stpilogo} alt='logo' className='logo' />
       <ul>
         <li><NavLink to ="/">Home</NavLink></li>
@@ -13,6 +15,10 @@ export default function Navbar() {
         <li><NavLink to="/homepage" >ConfigGen</NavLink></li>
         <li><NavLink to="/terminal" >Terminal</NavLink></li>
       </ul>
+    </div>
+    <div>
+      <img className='logo2' src = {logo} alt = ""></img>
+    </div>
     </div>
   );
 }
