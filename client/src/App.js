@@ -9,13 +9,11 @@ import Landingpage from './components/page/landingpage/Landingpage';
 function App() {
   return (
     <div className="App">
-      
       <Router>
         <Navbar />
         <div  className = "pages">
         <Routes>
           <Route path="/" element={<Landingpage />}/>
-          <Route path="/landingpage" element={<Landingpage />}/>
           <Route path="/homepage" element={<Homepage />}/>
           <Route path="/presetGen" element={<PresetGen />}/>
           <Route path="/terminal" element={<Terminal />}/>
