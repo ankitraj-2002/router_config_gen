@@ -1,10 +1,11 @@
 import React from 'react'
-import './landingpage.css'
-export default function Landingpage() {
+import TeamSlider from  './slider'
+function Landingpage() {
   return (
     <div>
-            <div> About the Project
-              </div>  
+      <TeamSlider />
     </div>
   )
 }
+
+export default Landingpage
