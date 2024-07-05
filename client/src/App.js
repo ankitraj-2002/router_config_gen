@@ -14,6 +14,7 @@ function App() {
         <Navbar />
         <div  className = "pages">
         <Routes>
+          <Route path="/" element={<Landingpage />}/>
           <Route path="/landingpage" element={<Landingpage />}/>
           <Route path="/homepage" element={<Homepage />}/>
           <Route path="/presetGen" element={<PresetGen />}/>

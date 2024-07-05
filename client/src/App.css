@@ -3,7 +3,8 @@
 	background-color: #606060; /* Light grey background */
 	
 	min-height: 100vh;
-	height: fit-content;
+	max-height: 150vh;;
+	/* height: fit-content; */
 	/* padding: 15px; */
 
   }

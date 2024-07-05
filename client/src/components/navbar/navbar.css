@@ -48,10 +48,12 @@
 .active {
   color: white;
   padding: 2vh;
-  padding-bottom: 4.5vh;
+  padding-bottom: 4vh;
   padding-top: 10px;
   border-top: 10px;
-  border-radius: 4px;
+  /* border: 4px; */
+  border-top-left-radius: 10px;
+  /* border-top-right-radius: 10px ; */
   text-decoration: none;
   /* border: 2px solid #ffffff; */
     background-color: #606060;
