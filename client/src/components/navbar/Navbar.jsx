@@ -8,7 +8,7 @@ export default function Navbar() {
     <div className='navbar'>
       <img src={stpilogo} alt='logo' className='logo' />
       <ul>
-        <li><NavLink to ="/landingpage">Home</NavLink></li>
+        <li><NavLink to ="/">Home</NavLink></li>
         <li><NavLink to="/presetGen" >PresetGen</NavLink></li>
         <li><NavLink to="/homepage" >ConfigGen</NavLink></li>
         <li><NavLink to="/terminal" >Terminal</NavLink></li>
