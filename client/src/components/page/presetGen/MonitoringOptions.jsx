@@ -28,15 +28,6 @@ const CommandGenerator = ({setAppendLine}) => {
       // setGeneratedCommand(previous =>[...previous,code]);
     }
   };
-  //   const handleCopyAll= () => {
-  //   navigator.clipboard.writeText(generatedCommand.join('\n'))
-  //     .then(() => {
-  //       alert('Command copied to clipboard!');
-  //     })
-  //     .catch((err) => {
-  //       console.error('Failed to copy!', err);
-  //     });
-  // };
   return (
     <div style={{ padding: '20px' }}>
       <h1>Monitoring options Command</h1>
@@ -80,18 +71,6 @@ const CommandGenerator = ({setAppendLine}) => {
           For Bgp Monitoring
         </button>
       </div>
-      {/* {generatedCommand.length>0 && (
-        <div style={{ marginTop: '20px' }}>
-          <h2 style ={{display: 'inline-block'}}>Generated Code:</h2>
-          <button 
-            onClick={handleCopyAll} 
-            style={{ float: 'right', marginTop: '35px' }}
-          >
-            Copy All
-          </button>
-          <pre className="generatecommand" >{generatedCommand.join('\n')}</pre>
-        </div>
-      )} */}
     </div>
   );
 };

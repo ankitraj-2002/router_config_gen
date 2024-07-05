@@ -29,16 +29,6 @@ const CommandGenerator = ({setAppendLine}) => {
     }
   };
 
-  // const handleCopyAll = () => {
-  //   navigator.clipboard.writeText(generatedCommand)
-  //     .then(() => {
-  //       alert('Code copied to clipboard!');
-  //     })
-  //     .catch(err => {
-  //       console.error('Failed to copy!', err);
-  //     });
-  // };
-
   return (
     <div style={{ padding: '20px' }}>
       <h1>Firewall Filters Command</h1>
@@ -106,18 +96,6 @@ const CommandGenerator = ({setAppendLine}) => {
       >
         Generate Code
       </button>
-      {/* {generatedCommand && (
-        <div style={{ marginTop: '20px' }}>
-          <h2>Generated Code:</h2>
-          <button
-            onClick={handleCopyAll}
-            style={{ float: 'right', marginTop: '10px' }}
-          >
-            Copy Code
-          </button>
-          <pre style={{ clear: 'both' }}>{generatedCommand}</pre>
-        </div>
-      )} */}
     </div>
   );
 };

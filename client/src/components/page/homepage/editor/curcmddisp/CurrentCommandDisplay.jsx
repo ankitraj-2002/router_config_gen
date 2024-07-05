@@ -1,12 +1,3 @@
-// import React from 'react' ;
-// const CurrentCommandDisplay = ({commandString}) => {
-//   return (
-//     <div className='current-command-display'>{commandString}</div>
-//   )
-// };
-
-// export default CurrentCommandDisplay;
-
 
 import React, { useRef, useEffect } from 'react';
 import './curcmddisp.css';
