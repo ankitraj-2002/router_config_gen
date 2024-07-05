@@ -1,4 +1,4 @@
-/* TeamSlider.css */
+/* slider.css */
 
 .team-slider {
 	position: fixed;
@@ -8,7 +8,7 @@
 	width:20%;
 	background-color: #1c1c1c; /* Change background color as needed */
 	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-	z-index: 1000;
+	z-index: 0;
   }
   
   .team-member {
