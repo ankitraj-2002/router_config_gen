@@ -4,10 +4,10 @@ import Typewriter from './tagline';
 import './landingpage.css';
 function Landingpage() {
   return (
-    <div>
+    <div className='landing'>
       <p className = 'tagline'>Your Ultimate Network Configuration Companion</p>
     
-      <Typewriter text="Precise Configuration,Zero Hassle" speed={70} />
+      <Typewriter text="&nbsp; Precise Configuration,Zero Hassle" speed={70} />
       <TeamSlider />
     </div>
   )

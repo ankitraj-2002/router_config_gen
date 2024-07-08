@@ -16,7 +16,7 @@ export default function Navbar() {
         <li><NavLink to="/terminal" >Terminal</NavLink></li>
       </ul>
     </div>
-    <div>
+    <div className='logocontainer'>
       <img className='logo2' src = {logo} alt = ""></img>
     </div>
     </div>

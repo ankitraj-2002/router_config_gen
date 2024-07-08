@@ -13,14 +13,14 @@ const Typewriter = ({ text, speed }) => {
         setDisplayedText((prev) => prev + text[index]);
         setIndex((prev) => prev + 1);
       }, speed);
-    }else if(index == text.length){
+    }else if(index === text.length){
       setTimeout(() =>{
         setIndex((prev) => prev+1);
       }, 2500)
     } else {
       // Reset to loop the text
       timeout = setTimeout(() => {
-        setDisplayedText('');
+        setDisplayedText(' ');
         setIndex(0);
       }, speed);
     }

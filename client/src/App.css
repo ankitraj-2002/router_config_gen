@@ -1,7 +1,15 @@
 .App {
 	font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
 	background-color: #606060; /* Light grey background */
-	
+	background-image: url('./components/images/netimg2.jpeg');
+		/* Path to your image */
+		background-size: cover;
+		/* Cover the entire area */
+		background-repeat: no-repeat;
+		/* Do not repeat the image */
+		/* background-position: center;*/
+		/* background-position: bottom;  */
+		/* background-position: 0dvb; */
 	min-height: 100vh;
 	max-height: 150vh;;
 	/* height: fit-content; */

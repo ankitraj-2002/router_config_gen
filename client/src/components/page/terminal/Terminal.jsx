@@ -178,7 +178,7 @@ const outputRef = useRef(null);
         disabled={!isConnected}
       />
       
-      {isConnected && <button className="backupIconButton" onClick={handleBackup}>Backup<img className='icon' src = {backupicon} alt=''></img></button>}
+      {isConnected && <button className="backupIconButton" onClick={handleBackup}>Backup&nbsp; <img className='icon' src = {backupicon} alt=''></img></button>}
     </div>
     </div>
   );
