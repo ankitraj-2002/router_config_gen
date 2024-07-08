@@ -23,7 +23,7 @@
   height: 11vh;
   padding-left: 1vh;;
   /* border-bottom-left-radius: 200vh; */
-  border-top-left-radius: 5.5vh;
+  border-top-left-radius: 3vh;
   background: #000;
 }
 .logo {
@@ -61,6 +61,7 @@
   cursor: pointer;
   text-decoration: none;
   margin-left: 2vw;
+  padding:  3vh 0 ;
 }
 
 /* Add hover effect for list items */
@@ -73,7 +74,7 @@
 .active {
   color: white;
   padding: 2vh;
-  padding-bottom: 4vh;
+  padding-bottom: 4.5vh;
   padding-top: 10px;
   border-top: 10px;
   /* border: 4px; */

@@ -129,8 +129,10 @@ const outputRef = useRef(null);
   return (
     <div className="ssh-terminal">
       <div className="connection-info">
+        <div className='options'>
         <label htmlFor="host">Host:</label>
         <input
+          className='inputoptions'
           type="text"
           id="host"
           value={host}
@@ -139,6 +141,7 @@ const outputRef = useRef(null);
         />
         <label htmlFor="port">Port:</label>
         <input
+        className='inputoptions'
           type="number"
           id="port"
           value={port}
@@ -147,6 +150,7 @@ const outputRef = useRef(null);
         />
         <label htmlFor="username">Username:</label>
         <input
+        className='inputoptions'
           type="text"
           id="username"
           value={username}
@@ -155,13 +159,16 @@ const outputRef = useRef(null);
         />
         <label htmlFor="password">Password:</label>
         <input
+          className='inputoptions'
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           disabled={isConnected}
         />
-        <button onClick={handleConnect}>
+        </div>
+        <button
+                className={`toggle-button ${isConnected ? 'connected' : 'disconnected'}`} onClick={handleConnect}>
           {isConnected ? 'Disconnect' : 'Connect'}
         </button>
       </div>
@@ -170,6 +177,7 @@ const outputRef = useRef(null);
       </div>
       <div className="ipCommand">
       <input
+      className='inputText'
         type="text"
         placeholder="Enter command"
         value={command}
