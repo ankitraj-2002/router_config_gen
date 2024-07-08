@@ -4,7 +4,7 @@ import './tagline.css'; // Create this CSS file for custom styles
 
 const Typewriter = ({ text, speed }) => {
   const [displayedText, setDisplayedText] = useState('');
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
 
   useEffect(() => {
     let timeout;
