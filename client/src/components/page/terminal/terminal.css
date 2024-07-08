@@ -1,11 +1,15 @@
 .ssh-terminal{
     padding: 10px;
 }
+/* .terminal-label{
+    color: #ffffff;
+} */
 
 .connection-info{
     padding: 10px;
-    position: sticky;
-    display: flex;
+    /* position: sticky; */
+    /* display: flex; */
+    color: #dddddd;
     /* margin-left: 2vw; */
 }
 .connection-info input{
@@ -20,9 +24,10 @@
         padding: 10px;
         /* Dark mode background for the display */
         color: #f1f1f1;
+        border: 10px white;    
         /* Light text color for contrast */
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0px 12px rgba(255, 255, 255, 1);
         overflow: auto;
         height: 60vh;
 }
