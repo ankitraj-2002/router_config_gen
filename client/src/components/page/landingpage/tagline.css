@@ -1,13 +1,15 @@
 /* Typewriter.css */
 .typewriter {
-	color: azure;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* height: 100vh; */
-	margin-top: 3vh;
+	height: 4vh;
+	/* margin-top: 3vh; */
 	font-family: 'Courier New', Courier, monospace;
-	font-size: 30px;
 	text-align: center;
 	text-decoration: solid;
+	font-weight: bold; /* Makes the text bold */
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 255); /* Adds shadow to the text */
+	font-size: 1.5em; /* Adjust the font size as needed */
+	color: #aca7a7; /* Change color if needed */
   }  
