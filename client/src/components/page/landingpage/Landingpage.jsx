@@ -9,7 +9,6 @@ function Landingpage() {
       <p className = 'tagline'>Your Ultimate Network Configuration Companion</p>
       <Typewriter text=" Precise Configuration,Zero Hassle" speed={70} />
       <IntroductionCard />
-      <TeamSlider />
     </div>
   )
 }
