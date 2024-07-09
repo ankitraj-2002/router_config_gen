@@ -29,7 +29,7 @@ export default function Navbar() {
         <li><NavLink to="/presetGen"   className='nav-link'>{({ isActive }) => (
                 <>
                   <img src={isActive ? presetGenActive :presetGenInactive} alt="" className='nav-icon' />
-                  <span>&nbsp;configGen</span>
+                  <span>&nbsp;PresetGen</span>
                 </>
               )}
         </NavLink></li>
@@ -37,7 +37,7 @@ export default function Navbar() {
         {({ isActive }) => (
                 <>
                   <img src={isActive ? configGenActive :configGenInactive} alt="" className='nav-icon' />
-                  <span>&nbsp;configGen</span>
+                  <span>&nbsp;ConfigGen</span>
                   
                 </>
               )}</NavLink></li>
