@@ -1,0 +1,80 @@
+.footer {
+	background-color: #181818;
+	color: #fff;
+	padding: 1vh;
+  }
+.footer-title {
+	font-family: 'Anton SC', sans-serif;
+	text-align: center;
+}
+.t1 {
+	font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+	text-align: center;
+}
+  .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	/* padding: 0 15px; */
+  }
+  
+  .footer-content {
+	display: flex;
+	align-items: center;
+	justify-content:space-evenly;
+  }
+  
+  .team-members {
+	text-align: center;
+  }
+  
+  .team-members h2 {
+	margin-bottom: 10px;
+  }
+  
+  .team-members ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  .team-members li {
+	margin-bottom: 20px;
+  }
+  
+  .team-members h3 {
+	margin-top: 0;
+  }
+  
+  .social-links {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	padding: 0;
+	margin: 10px 0;
+  }
+  
+  .social-links li {
+	margin: 10px;
+  }
+  
+  .social-links a {
+	color: #fff;
+	font-size: 18px;
+	transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+	color: #f7931e;
+  }
+  
+  .copyright {
+	font-family: 'Anton SC', sans-serif;
+	text-align: center;
+	margin-top: 20px;
+  }
+
+.footer-img {
+	width:22vw;
+	height:auto;
+}
