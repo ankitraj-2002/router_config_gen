@@ -1,9 +1,10 @@
 /* General styling for the navbar */
-.nav{
-    display: flex;
-    justify-content: center;
-      align-items: center;
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .navbar {
   display: flex;
   align-items: center;
@@ -18,14 +19,14 @@
   top: 0;
   height: 8vh;
 }
-.logocontainer{
-  /* height: 100%; */
+
+.logocontainer {
   height: 11vh;
-  padding-left: 1vh;;
-  /* border-bottom-left-radius: 200vh; */
+  padding-left: 1vh;
   border-top-left-radius: 3vh;
   background: #000;
 }
+
 .logo {
   margin-left: 5%;
   height: 7.5vh;
@@ -33,35 +34,34 @@
   justify-content: center;
   align-items: center;
 }
-.logo2{
-  /* margin-left: 5%; */
+
+.logo2 {
   height: 11vh;
-  width: 18vw;;
-  /* width: 16vw; */
+  width: 18vw;
   justify-content: center;
   align-items: center;
   right: 0%;
-  /* transform: scale(1.1); */
 }
 
 /* Styling for the unordered list */
 .navbar ul {
   flex: 1;
   text-align: center;
+  justify-content: center;
   display: flex;
   list-style-type: none;
   align-items: center;
 }
 
 /* Styling for list items */
-.navbar li a:not(.active){
+.navbar li a:not(.active) {
   margin: 10px;
   color: black;
   font-size: 16px;
   cursor: pointer;
   text-decoration: none;
-  margin-left: 2vw;
-  padding:  3vh 0 ;
+  margin-left: 3vw;
+  padding: 3vh 0;
 }
 
 /* Add hover effect for list items */
@@ -70,18 +70,25 @@
 }
 
 /* Add active link styling */
-
 .active {
   color: white;
-  padding: 2vh;
-  padding-bottom: 4.5vh;
-  padding-top: 10px;
+  padding: 2.5vh;
+  /* padding-bottom: 4.5vh; */
   border-top: 10px;
-  /* border: 4px; */
-  border-top-left-radius: 10px;
-  /* border-top-right-radius: 10px ; */
+  border-radius: 10px;
   text-decoration: none;
-  /* border: 2px solid #ffffff; */
-    background-color: #000000;
-      /* Light grey background */
+  background-color: #000000;
+  /* margin-left: 2vh; */
+}
+
+.nav-icon {
+  width: 4vh;
+  /* transition: transform 0.2s ease-in-out; */
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.1);
+}
+.nav-link{
+  display: flex;
 }
