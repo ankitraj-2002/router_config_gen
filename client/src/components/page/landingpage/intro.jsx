@@ -7,10 +7,10 @@ import 'slick-carousel/slick/slick-theme.css';
 const IntroductionCard = () => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     centerMode: true,
@@ -37,7 +37,7 @@ const IntroductionCard = () => {
             <a href="#learn-more" className="card-button">Learn More</a>
           </div>
         </div>
-        <div className="card">
+        {/* <div className="card">
           <h4 className="card-title">presetGen</h4>
           <p className="card-content">
             The presetGen feature of our React web app offers a streamlined and 
@@ -53,7 +53,7 @@ const IntroductionCard = () => {
           <div className="card-actions">
             <a href="#learn-more" className="card-button">Learn More</a>
           </div>
-        </div>
+        </div> */}
       </Slider>
     </div>
   );
