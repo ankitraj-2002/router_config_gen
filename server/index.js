@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-// const initializeSocketServer = require('./sshServer');
 
 app.use(express.json());
 app.use(cors());
@@ -26,6 +25,8 @@ const policerName = require("./routes/policerNameTable");
 const communityCommands= require("./routes/communityTable");
 const trapgroupCommands = require("./routes/trapGroupTable");
 const tracerouteCommands = require("./routes/tracerouteTable");
+const categoriesCommands = require("./routes/categoriesTable");
+const trapOptionsCommands = require("./routes/trapOptionsTable");
 
 ////*****////
 
@@ -47,11 +48,10 @@ app.use("/policerNameTable", policerName);
 app.use("/communityTable", communityCommands);
 app.use("/trapGroupTable", trapgroupCommands);
 app.use("/tracerouteTable", tracerouteCommands);
+app.use("/categoriesTable", categoriesCommands);
+app.use("/trapOptionsTable", trapOptionsCommands);
 
 ////*****////
-
-//Initialization of sshServer//
-// const server = initializeSocketServer(app);
 
 
 db.sequelize.sync().then(() =>{
