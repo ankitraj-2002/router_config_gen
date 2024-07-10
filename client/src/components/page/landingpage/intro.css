@@ -1,32 +1,64 @@
-/* new css ........................................................................................................................................... */
+.container {
+	width: 60vw;
+	margin: auto;
+	
+}
 
-  .container{
-	width: 75vw;
-	margin:auto;
-  }
-
-  .holder{
+.holder {
 	margin-top: 5vh;
-	/* height: 40vh; */
-  }
+	box-shadow: 10px 10px 20px rgba(0, 217, 255, 0.2);
+		border-radius: 4vh;
+}
 
-  .card{
+.card {
 	color: aliceblue;
 	background-color: rgba(23, 22, 22, 0.8);
-	height: 50vh;
-	/* margin: 2vh; */
-	/* padding: 2vh; */
-  }
+	height: 60vh;
 
-  .head{
+}
+
+.head {
 	padding: 0 2vw;
 	padding-top: 2vh;
-  }
+	display: flex;
+}
 
-  .carddesc{
+.cardcontent {
 	padding: 0 2vw;
 	padding-bottom: 2vh;
-  }
+	display: flex;
+	flex-direction: column;
+}
 
+.carddesc {
+	text-align: justify;
+	line-height: 1.5;
+	/* Adjust the value as needed */
+	flex: 1;
+}
 
-   
+.cardicon {
+	height: 4vw;
+}
+
+.nav-ref {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+}
+
+.nav-link-button {
+	background-color: rgba(255, 255, 255);
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 8vw;
+	height: 4vh;
+	border: none;
+	border-radius: 1vh;
+	margin-left: auto;
+}
+
+.nav-link-button:hover {
+	transform: scale(1.1);
+}
