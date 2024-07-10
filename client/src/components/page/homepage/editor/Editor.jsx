@@ -49,19 +49,21 @@ return (
     <div className='right-panel'>
       <CurrentCommandDisplay commandString={appendedText} />
       {showTextbox ? (
-        <>
+        <div className='manual'>
           <Textbox text={inputText} onTextChange={handleTextChange} />
           <button onClick={handlePushText} className='button'>Push Text</button>
-        </>
+        </div>
       ) : (
         <div classsName = "option-container">
           <Options onAppendText={handleAppendText} resetNextCommand={resetNextCommand} />
+          <div className='rhs'>
           <button className="button" onClick={handleClick}>
             Add manually
           </button>
           <button className='button' onClick={handleAddNewline}>
             Next-Command
           </button>
+          </div>
         </div>
       )}
     </div>

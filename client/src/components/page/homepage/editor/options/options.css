@@ -1,13 +1,3 @@
-/* .options {
-    background-color: #965f20;
-    border: 2px solid #808080;
-    padding: 10px;
-    font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
-    margin: 10px 0;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    width: 90vw;
-    justify-content: center;
-  } */
 .options #heading {
   color: #fff;
   font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif; 
@@ -20,10 +10,17 @@
   width: fit-content;
 }
 .buttonlist{
-  background-color: black;
-  border: 2px solid #ffffff;
+  background-color: #454545;
+  border: 2px solid   #313030;
   border-radius: 10px;
-  border:5px #d31616;
-
+  display: flex;
+  /* border:5px #d31616; */
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
+}
+.buttonListbutton:hover{
+align-items: center;
+transform: scale(1.1);
+justify-content: center;
 }

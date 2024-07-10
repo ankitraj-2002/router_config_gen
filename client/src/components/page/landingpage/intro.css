@@ -1,7 +1,10 @@
 .container {
 	width: 60vw;
 	margin: auto;
-	
+}
+
+.cardname{
+	font-size: x-large;
 }
 
 .holder {
@@ -13,7 +16,7 @@
 .card {
 	color: aliceblue;
 	background-color: rgba(23, 22, 22, 0.8);
-	height: 60vh;
+	height: 62vh;
 
 }
 
@@ -21,6 +24,7 @@
 	padding: 0 2vw;
 	padding-top: 2vh;
 	display: flex;
+	align-items: center;
 }
 
 .cardcontent {
