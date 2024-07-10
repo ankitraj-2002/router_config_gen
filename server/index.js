@@ -23,6 +23,9 @@ const servicesCommands = require("./routes/servicesTable");
 const sshCommands = require("./routes/sshTable");
 const snmpCommands = require("./routes/snmpTable");
 const policerName = require("./routes/policerNameTable");
+const communityCommands= require("./routes/communityTable");
+const trapgroupCommands = require("./routes/trapGroupTable");
+const tracerouteCommands = require("./routes/tracerouteTable");
 
 ////*****////
 
@@ -41,6 +44,9 @@ app.use("/servicesTable",servicesCommands);
 app.use("/sshTable",sshCommands);
 app.use("/snmpTable",snmpCommands);
 app.use("/policerNameTable", policerName);
+app.use("/communityTable", communityCommands);
+app.use("/trapGroupTable", trapgroupCommands);
+app.use("/tracerouteTable", tracerouteCommands);
 
 ////*****////
 
