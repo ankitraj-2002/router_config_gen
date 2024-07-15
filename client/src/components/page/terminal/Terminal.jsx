@@ -5,17 +5,6 @@ import './terminal.css';
 
 const socket = io('http://localhost:3002'); // Replace with your server URL
 
-// function countWords(line) {
-//   const words = line.split(' ').filter(word => word.trim() !== '');
-//   return words.length;
-// }
-// function removeCharactersInRange(str, start, end) {
-//   if (start < 0 || end >= str.length || start > end) {
-//     throw new Error('Invalid range');
-//   }
-//   return str.slice(0, start) + str.slice(end + 1);
-// }
-
 const SSHTerminal = () => {
   const [host, setHost] = useState('');
   const [port, setPort] = useState(22);
@@ -24,12 +13,12 @@ const SSHTerminal = () => {
   const [output, setOutput] = useState('Provide Credentials to Connect');
   const [command, setCommand] = useState('');
   const [isConnected, setIsConnected] = useState(false);
-  // const [linesToRemove, setLinesToRemove] = useState('');
+
+
 const outputRef = useRef(null);
   useEffect(() => {
     // console.log("Mounted");
     const handleSshOutput = (data) => {
-      // const filteredOutput = data.split('\n').slice(linesToRemove).join('\n').trim();
       const filteredOutput = data;
       setOutput((prevOutput) => prevOutput.trim() + '\n'+filteredOutput+'\n');
     };
@@ -53,9 +42,6 @@ const outputRef = useRef(null);
       socket.off('ssh-error',handleError);
     };
   }, [setOutput]);
-  
-  // console.log(output);
-  // console.log(command);
   useEffect(() => {
     if(outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
@@ -78,16 +64,8 @@ const outputRef = useRef(null);
       event.preventDefault();
       const commandToSend = command.trim();
       if (commandToSend) {
-        // const linesToremove = countWords(commandToSend);
-        // if(!(linesToRemove-1) === 0){
-        //   setLinesToRemove(linesToRemove+100);
-        // }else{
-        //   setLinesToRemove(linesToremove);
-        // }
         socket.emit('ssh-command', commandToSend);
         setCommand('');
-        // // Clear input after sending command
-        // setOutput((prevOutput) => prevOutput.trim() + `\n${commandToSend}`);
       }
     }
   };
@@ -97,7 +75,7 @@ const outputRef = useRef(null);
       return; // Don't proceed if not connected
     }
 
-    const commandToSend = 'ifconfig';
+    const commandToSend = 'show configuration | display set | no-more';
     await socket.emit('ssh-command', commandToSend);
 
     let backupOutput = '';
@@ -121,11 +99,6 @@ const outputRef = useRef(null);
 
     window.URL.revokeObjectURL(url); // Clean up the temporary URL
   };
-  // console.log(command.length);
-  // console.log(output.length);
-  // for(let i = 0;i<output.length;i+=1){
-  //   console.log(output[i]);
-  // }
   return (
     <div className="ssh-terminal">
       <div className="connection-info">
