@@ -27,6 +27,7 @@ const Display = ({ CommandLine }) => {
     const link = document.createElement('a');
 
     link.href = URL.createObjectURL(blob);
+    console.log(link.href);
     link.download = 'Config_file.txt';
 
     document.body.appendChild(link);
@@ -37,8 +38,8 @@ const Display = ({ CommandLine }) => {
   return (
     <div className="main-content">
        <div className="display-header">
-          <button onClick={downloadText} className='dispButtons' ><img className = "disp-icon" src= {downloadimg} alt=''></img></button>
-          <button onClick={copyToClipboard} className='dispButtons' ><img className = "disp-icon" src= {copyimg} alt=''></img></button>
+          <button onClick={downloadText} className='dispButtons'><img className = "disp-icon" src= {downloadimg} alt=''></img></button>
+          <button onClick={copyToClipboard} className='dispButtons'><img className = "disp-icon" src= {copyimg} alt=''></img></button>
         </div>
       <div className="display" ref={outputRef}> 
         <pre>{CommandLine}</pre>

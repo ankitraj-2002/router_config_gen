@@ -10,6 +10,7 @@ const CurrentCommandDisplay = ({ commandString, onChange }) => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto'; // Reset height before calculating
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      //  textareaRef.current.scrollTop = textareaRef.current.scrollHeight;
     }
   }, [commandString]);
 

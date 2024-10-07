@@ -64,8 +64,14 @@ const outputRef = useRef(null);
       event.preventDefault();
       const commandToSend = command.trim();
       if (commandToSend) {
-        socket.emit('ssh-command', commandToSend);
-        setCommand('');
+        if(commandToSend == "exit"){
+          socket.emit('ssh-disconnect');
+          setOutput("Disconnected");
+        }
+        else{
+          socket.emit('ssh-command', commandToSend);
+          setCommand('');
+        }
       }
     }
   };

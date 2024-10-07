@@ -1,26 +1,57 @@
-
-
 .display-header {
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-end; */
+  align-items: end;
   margin-bottom: 10px;
 }
+/* .display-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+} */
 
-.copy-button {
+.disp-icon {
+  width: 24px;
+  /* Set the width of the icon */
+  height: 24px;
+  /* Set the height of the icon */
+
+      /* Transparent background */
+
+      /* Remove outline on focus */
+      /* padding: 10px; */
+}
+.dispButtons{
+      border: none;
+          background-color: transparent;  
+          /* Remove default border */
+          cursor: pointer;
+          /* Change cursor to pointer */
+          outline: none;
+}
+/* .copy-icon {
   top: 5%;
   right: 5%;
-  position:static;
+  position: static;
   padding: 8px 12px;
-  background-color: #007bff;
-  color: #fff;
+  height: 20px;
+  background-color: #565656;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
+}  */
 
-.copy-button:hover {
-  background-color: #0056b3;
+.disp-icon:hover {
+  transform: scale(1.1);
+      /* Slightly enlarge the button */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      /* Add a subtle shadow */
+  /* background-color: #000000; */
   /* Darker shade on hover */
 }
 

@@ -8,7 +8,8 @@ import Delete_class_of_service_interface from './Delete_class_of_service_interfa
 import Interface_description from './Interface_description';
 import RoutingOption from './RoutingOption';
 import MonitoringOptions from './MonitoringOptions';
-import Display from './Display';
+// import Display from './Display';
+import Display from '../homepage/editor/display/Display';
 
 
 const components = {

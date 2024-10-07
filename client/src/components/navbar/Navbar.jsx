@@ -38,7 +38,6 @@ export default function Navbar() {
                 <>
                   <img src={isActive ? configGenActive :configGenInactive} alt="" className='nav-icon' />
                   <span>&nbsp;ConfigGen</span>
-                  
                 </>
               )}</NavLink></li>
         <li><NavLink to="/terminal" className='nav-link'>
